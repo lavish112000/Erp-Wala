@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actionable Analytics - School Chale Hum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glassmorphism-header {
+            background-color: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+        .feature-icon-bg {
+            background: linear-gradient(135deg, #dbeafe, #c7d2fe);
+        }
+        .glow-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+        .glow-button:hover {
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* Animations */
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(168, 85, 247, 0); } 100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes chartGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+        
+        .float-animation { animation: float 6s ease-in-out infinite; }
+        .pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .chart-bar { transform-origin: bottom; animation: chartGrow 1s ease-out forwards; }
+        
+        .stat-card { transition: all 0.3s ease; }
+        .stat-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3); }
+        
+        .feature-card-enhanced { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .feature-card-enhanced:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); }
+
+        /* Animation Delay Utilities */
+        .anim-delay-0-1s { animation-delay: 0.1s; }
+        .anim-delay-0-2s { animation-delay: 0.2s; }
+        .anim-delay-0-3s { animation-delay: 0.3s; }
+        .anim-delay-0-4s { animation-delay: 0.4s; }
+        .anim-delay-0-5s { animation-delay: 0.5s; }
+        .anim-delay-0-6s { animation-delay: 0.6s; }
+        .anim-delay-2s { animation-delay: 2s; }
+        .anim-delay-4s { animation-delay: 4s; }
+
+        /* Chart Height Utilities */
+        .chart-h-60 { height: 60%; }
+        .chart-h-70 { height: 70%; }
+        .chart-h-75 { height: 75%; }
+        .chart-h-85 { height: 85%; }
+        .chart-h-90 { height: 90%; }
+        .chart-h-100 { height: 100%; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="glassmorphism-header fixed top-0 left-0 right-0 z-50 border-b border-gray-200/80">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-900">
+                School Chale <span class="text-blue-600">Hum</span>
+            </a>
+            <nav class="hidden md:flex space-x-10 items-center">
+                <a href="index.html#features" class="text-gray-600 hover:text-blue-600">Features</a>
+                <a href="index.html#mobile-app" class="text-gray-600 hover:text-blue-600">Mobile App</a>
+                <a href="index.html#testimonials" class="text-gray-600 hover:text-blue-600">Testimonials</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-blue-600">Contact</a>
+            </nav>
+            <a href="#" class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold glow-button">Request a Demo</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-36 pb-16 bg-gradient-to-br from-purple-50 to-pink-100 relative overflow-hidden">
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-20 left-10 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 float-animation"></div>
+                <div class="absolute bottom-20 right-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 float-animation anim-delay-2s"></div>
+                <div class="absolute top-1/2 left-1/2 w-56 h-56 bg-violet-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 float-animation anim-delay-4s"></div>
+            </div>
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="flex items-center justify-center h-20 w-20 rounded-2xl feature-icon-bg pulse-ring">
+                        <i data-lucide="pie-chart" class="text-blue-700 h-10 w-10"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 text-center leading-tight">
+                    Actionable Analytics & Reporting
+                </h1>
+                <p class="mt-6 text-xl text-gray-700 max-w-3xl mx-auto text-center">
+                    Transform raw data into strategic insights with AI-powered dashboards, predictive analytics, and customizable reports that drive data-informed decision making across your institution.
+                </p>
+                
+                <div class="grid md:grid-cols-4 gap-6 mt-12 max-w-5xl mx-auto">
+                    <div class="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg stat-card text-center">
+                        <div class="text-3xl font-bold text-purple-600 stat-value">50</div>
+                        <div class="text-sm text-gray-600 mt-2">+ Report Types</div>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg stat-card text-center">
+                        <div class="text-3xl font-bold text-purple-600 stat-value">90</div>
+                        <div class="text-sm text-gray-600 mt-2">% Faster Insights</div>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg stat-card text-center">
+                        <div class="text-3xl font-bold text-purple-600 stat-value">100</div>
+                        <div class="text-sm text-gray-600 mt-2">% Data Accuracy</div>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg stat-card text-center">
+                        <div class="text-3xl font-bold text-purple-600 stat-value">24</div>
+                        <div class="text-sm text-gray-600 mt-2">/7 Real-time Data</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Dashboard Preview -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-bold text-gray-900 text-center mb-4">Visual Data Intelligence</h2>
+                    <p class="text-center text-gray-600 mb-12">See your institution's performance at a glance with interactive dashboards</p>
+                    
+                    <!-- Sample Dashboard -->
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl">
+                        <div class="grid md:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg feature-card-enhanced">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-sm font-semibold text-gray-600">Student Performance</span>
+                                    <i data-lucide="trending-up" class="text-green-600 h-5 w-5"></i>
+                                </div>
+                                <div class="text-3xl font-bold text-purple-600 mb-2">87%</div>
+                                <div class="text-xs text-green-600 font-semibold">↑ 12% from last term</div>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl shadow-lg feature-card-enhanced">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-sm font-semibold text-gray-600">Attendance Rate</span>
+                                    <i data-lucide="users-round" class="text-blue-600 h-5 w-5"></i>
+                                </div>
+                                <div class="text-3xl font-bold text-purple-600 mb-2">94%</div>
+                                <div class="text-xs text-green-600 font-semibold">↑ 8% improvement</div>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl shadow-lg feature-card-enhanced">
+                                <div class="flex items-center justify-between mb-4">
+                                    <span class="text-sm font-semibold text-gray-600">Revenue Growth</span>
+                                    <i data-lucide="dollar-sign" class="text-emerald-600 h-5 w-5"></i>
+                                </div>
+                                <div class="text-3xl font-bold text-purple-600 mb-2">+28%</div>
+                                <div class="text-xs text-green-600 font-semibold">↑ Year over year</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Chart Visualization -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-gray-900 mb-6">Monthly Enrollment Trends</h4>
+                            <div class="flex items-end justify-between h-48 gap-3">
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="w-full bg-gradient-to-t from-purple-600 to-purple-400 rounded-t chart-bar chart-h-60 anim-delay-0-1s"></div>
+                                    <span class="text-xs text-gray-600 mt-2">Jan</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="w-full bg-gradient-to-t from-purple-600 to-purple-400 rounded-t chart-bar chart-h-70 anim-delay-0-2s"></div>
+                                    <span class="text-xs text-gray-600 mt-2">Feb</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="w-full bg-gradient-to-t from-purple-600 to-purple-400 rounded-t chart-bar chart-h-85 anim-delay-0-3s"></div>
+                                    <span class="text-xs text-gray-600 mt-2">Mar</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="w-full bg-gradient-to-t from-purple-600 to-purple-400 rounded-t chart-bar chart-h-75 anim-delay-0-4s"></div>
+                                    <span class="text-xs text-gray-600 mt-2">Apr</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="w-full bg-gradient-to-t from-purple-600 to-purple-400 rounded-t chart-bar chart-h-90 anim-delay-0-5s"></div>
+                                    <span class="text-xs text-gray-600 mt-2">May</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="w-full bg-gradient-to-t from-purple-600 to-purple-400 rounded-t chart-bar chart-h-100 anim-delay-0-6s"></div>
+                                    <span class="text-xs text-gray-600 mt-2">Jun</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Analytics Impact -->
+                    <div class="mt-12 grid md:grid-cols-2 gap-8">
+                        <div class="bg-purple-50 p-6 rounded-xl border-2 border-purple-200">
+                            <h4 class="font-bold text-purple-700 mb-4 text-center">Key Insights Delivered</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
+                                    <span class="text-sm text-gray-700">Enrollment Predictions</span>
+                                    <span class="text-purple-600 font-bold">95% accurate</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
+                                    <span class="text-sm text-gray-700">At-Risk Student Identification</span>
+                                    <span class="text-purple-600 font-bold">30 days early</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
+                                    <span class="text-sm text-gray-700">Financial Forecasting</span>
+                                    <span class="text-purple-600 font-bold">90% precision</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
+                                    <span class="text-sm text-gray-700">Custom Reports Generated</span>
+                                    <span class="text-purple-600 font-bold">50+</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-pink-50 p-6 rounded-xl border-2 border-pink-200">
+                            <h4 class="font-bold text-pink-700 mb-4 text-center">Measurable Benefits</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <i data-lucide="zap" class="h-5 w-5 text-pink-600 mr-3 flex-shrink-0 mt-0.5"></i>
+                                    <div class="text-sm text-gray-700">Make data-driven decisions in real-time</div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="target" class="h-5 w-5 text-pink-600 mr-3 flex-shrink-0 mt-0.5"></i>
+                                    <div class="text-sm text-gray-700">Identify trends before they become problems</div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="trending-up" class="h-5 w-5 text-pink-600 mr-3 flex-shrink-0 mt-0.5"></i>
+                                    <div class="text-sm text-gray-700">Improve student outcomes by 25%</div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="clock" class="h-5 w-5 text-pink-600 mr-3 flex-shrink-0 mt-0.5"></i>
+                                    <div class="text-sm text-gray-700">Save 15 hours/week on reporting</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Powerful Analytics Capabilities</h2>
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Feature Item -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100">
+                                <i data-lucide="layout-dashboard" class="text-blue-600 h-6 w-6"></i>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold">Real-Time Dashboards</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Access live, customizable dashboards showing KPIs across enrollment, academics, finance, and operations. Monitor institutional health at a glance.
+                        </p>
+                    </div>
+
+                    <!-- Feature Item -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100">
+                                <i data-lucide="brain" class="text-green-600 h-6 w-6"></i>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold">AI-Powered Insights</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Leverage machine learning to predict student performance, identify at-risk students, and discover hidden patterns in your institutional data.
+                        </p>
+                    </div>
+
+                    <!-- Feature Item -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-100">
+                                <i data-lucide="file-bar-chart" class="text-purple-600 h-6 w-6"></i>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold">Custom Report Builder</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Create tailored reports with drag-and-drop ease. Schedule automated report generation and distribution to stakeholders via email.
+                        </p>
+                    </div>
+
+                    <!-- Feature Item -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-orange-100">
+                                <i data-lucide="users-round" class="text-orange-600 h-6 w-6"></i>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold">Student Performance Analytics</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Track individual and cohort performance trends. Identify learning gaps, measure intervention effectiveness, and support personalized learning.
+                        </p>
+                    </div>
+
+                    <!-- Feature Item -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-red-100">
+                                <i data-lucide="trending-up" class="text-red-600 h-6 w-6"></i>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold">Enrollment Forecasting</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Use predictive models to forecast future enrollment, plan capacity, and optimize recruitment strategies based on historical trends.
+                        </p>
+                    </div>
+
+                    <!-- Feature Item -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-teal-100">
+                                <i data-lucide="building-2" class="text-teal-600 h-6 w-6"></i>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold">Operational Efficiency Metrics</h3>
+                        </div>
+                        <p class="text-gray-600">
+                            Monitor staff productivity, resource utilization, facility usage, and operational costs to identify opportunities for optimization.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Types -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Comprehensive Analytics Across Your Institution</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    <div class="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="flex items-center justify-center h-14 w-14 rounded-full bg-blue-100 mx-auto mb-4">
+                            <i data-lucide="graduation-cap" class="text-blue-600 h-7 w-7"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Academic Analytics</h3>
+                        <p class="text-gray-600 text-sm">Grade distributions, pass rates, subject performance</p>
+                    </div>
+                    <div class="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="flex items-center justify-center h-14 w-14 rounded-full bg-green-100 mx-auto mb-4">
+                            <i data-lucide="dollar-sign" class="text-green-600 h-7 w-7"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Financial Analytics</h3>
+                        <p class="text-gray-600 text-sm">Revenue trends, collection rates, budget variance</p>
+                    </div>
+                    <div class="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="flex items-center justify-center h-14 w-14 rounded-full bg-purple-100 mx-auto mb-4">
+                            <i data-lucide="calendar-check" class="text-purple-600 h-7 w-7"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Attendance Analytics</h3>
+                        <p class="text-gray-600 text-sm">Absence patterns, punctuality, class participation</p>
+                    </div>
+                    <div class="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="flex items-center justify-center h-14 w-14 rounded-full bg-orange-100 mx-auto mb-4">
+                            <i data-lucide="user-plus" class="text-orange-600 h-7 w-7"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Admission Analytics</h3>
+                        <p class="text-gray-600 text-sm">Conversion rates, lead sources, funnel analysis</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Data-Driven Decision Making</h2>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto mb-4">
+                            <i data-lucide="target" class="text-blue-600 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Improve Outcomes</h3>
+                        <p class="text-gray-600">
+                            Identify struggling students early and intervene proactively, improving pass rates and graduation outcomes by 25%.
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mx-auto mb-4">
+                            <i data-lucide="dollar-sign" class="text-green-600 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Optimize Resources</h3>
+                        <p class="text-gray-600">
+                            Allocate staff, budgets, and facilities more efficiently based on utilization data, reducing operational costs by up to 20%.
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-purple-100 mx-auto mb-4">
+                            <i data-lucide="award" class="text-purple-600 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Demonstrate Impact</h3>
+                        <p class="text-gray-600">
+                            Showcase institutional performance to accreditors, boards, and stakeholders with compelling, evidence-based reports.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visualization Tools -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Powerful Visualization Tools</h2>
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl border border-gray-200">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="text-xl font-bold mb-4">Chart Types Available</h3>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center">
+                                        <i data-lucide="bar-chart-3" class="text-blue-600 h-5 w-5 mr-3"></i>
+                                        <span>Bar & Column Charts</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="pie-chart" class="text-blue-600 h-5 w-5 mr-3"></i>
+                                        <span>Pie & Donut Charts</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="activity" class="text-blue-600 h-5 w-5 mr-3"></i>
+                                        <span>Line & Area Charts</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="scatter-chart" class="text-blue-600 h-5 w-5 mr-3"></i>
+                                        <span>Scatter Plots</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="thermometer" class="text-blue-600 h-5 w-5 mr-3"></i>
+                                        <span>Heatmaps & Gauges</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-4">Export & Share</h3>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center">
+                                        <i data-lucide="file-spreadsheet" class="text-green-600 h-5 w-5 mr-3"></i>
+                                        <span>Export to Excel, CSV</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="file-text" class="text-green-600 h-5 w-5 mr-3"></i>
+                                        <span>PDF Report Generation</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="mail" class="text-green-600 h-5 w-5 mr-3"></i>
+                                        <span>Email Scheduled Reports</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="share-2" class="text-green-600 h-5 w-5 mr-3"></i>
+                                        <span>Shareable Dashboard Links</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="presentation" class="text-green-600 h-5 w-5 mr-3"></i>
+                                        <span>Embed in Presentations</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Unlock Your Institution's Data?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">
+                    Discover how actionable analytics can transform decision-making and drive better outcomes at your institution.
+                </p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="#" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all">Schedule a Demo</a>
+                    <a href="index.html#features" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition-all">Explore All Features</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-4">
+                <a href="index.html" class="text-white hover:text-blue-400">← Back to Home</a>
+            </p>
+            <p>&copy; 2025 School Chale Hum. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        function animateCounter(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 60;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 30);
+        }
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    
+                    if (entry.target.classList.contains('stat-card')) {
+                        const valueElement = entry.target.querySelector('.stat-value');
+                        if (valueElement && !valueElement.dataset.animated) {
+                            valueElement.dataset.animated = 'true';
+                            const text = valueElement.textContent;
+                            const number = parseInt(text);
+                            if (!isNaN(number)) {
+                                const suffix = text.replace(number, '');
+                                animateCounter(valueElement, number, suffix);
+                            }
+                        }
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.stat-card, .feature-card-enhanced, .chart-bar').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
