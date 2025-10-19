@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Chale Hum - The Ultimate Educational ERP Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* -- Animated Gradient Background -- */
+        .hero-gradient {
+            background: linear-gradient(-45deg, #e0f2fe, #dbeafe, #e0e7ff, #f3e8ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* -- Scroll-triggered Animations -- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition-delay: 0.2s;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Staggered animation delay */
+        .reveal.delay-1 { transition-delay: 0.3s; }
+        .reveal.delay-2 { transition-delay: 0.4s; }
+        .reveal.delay-3 { transition-delay: 0.5s; }
+
+
+        /* -- Enhanced UI Elements -- */
+        .glassmorphism-header {
+            background-color: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+        .nav-link-underline {
+            position: relative;
+        }
+        .nav-link-underline::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .nav-link-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .glow-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+        .glow-button:hover {
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            border-color: #93c5fd;
+        }
+        .feature-icon-bg {
+            background: linear-gradient(135deg, #dbeafe, #c7d2fe);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="glassmorphism-header fixed top-0 left-0 right-0 z-50 border-b border-gray-200/80">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-900">
+                School Chale <span class="text-blue-600">Hum</span>
+            </a>
+            <nav class="hidden md:flex space-x-10 items-center">
+                <a href="#features" class="text-gray-600 hover:text-blue-600 nav-link-underline">Features</a>
+                <a href="#mobile-app" class="text-gray-600 hover:text-blue-600 nav-link-underline">Mobile App</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-blue-600 nav-link-underline">Testimonials</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 nav-link-underline">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-2">
+                 <a href="#" class="hidden sm:inline-block bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold glow-button">Request a Demo</a>
+                 <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100" aria-label="Toggle mobile menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                 </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-gray-200/80">
+            <a href="#features" class="block py-2 text-gray-600 hover:text-blue-600">Features</a>
+            <a href="#mobile-app" class="block py-2 text-gray-600 hover:text-blue-600">Mobile App</a>
+            <a href="#testimonials" class="block py-2 text-gray-600 hover:text-blue-600">Testimonials</a>
+            <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+            <a href="#" class="block mt-2 bg-blue-600 text-white text-center px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Request a Demo</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-36 pb-24 hero-gradient relative overflow-hidden">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight reveal">
+                    The Operating System for <span class="text-blue-600">Modern Education</span>
+                </h1>
+                <p class="mt-6 text-lg text-gray-700 max-w-3xl mx-auto reveal delay-1">
+                    School Chale Hum offers a unified, cloud-native platform that empowers educators, engages students, and simplifies administration for institutions of the future.
+                </p>
+                <div class="mt-10 flex justify-center gap-4 flex-wrap reveal delay-2">
+                    <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg glow-button">Book a Personalized Demo</a>
+                    <a href="#features" class="bg-white text-gray-800 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all hover:scale-105 border border-gray-300 shadow-sm hover:shadow-lg">Discover Features</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 reveal">An Ecosystem Built for Growth</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto reveal delay-1">Integrate every facet of your institution on a single, intelligent platform.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature Card -->
+                    <a href="admissions-crm.html" class="bg-white p-8 rounded-xl feature-card reveal block cursor-pointer">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6">
+                            <i data-lucide="users-2" class="text-blue-700 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Intelligent Admissions & CRM</h3>
+                        <p class="text-gray-600">Automate your admissions pipeline from lead capture to enrollment with our integrated CRM, online applications, and smart follow-ups.</p>
+                    </a>
+                     <!-- Feature Card -->
+                    <a href="student-information.html" class="bg-white p-8 rounded-xl feature-card reveal delay-1 block cursor-pointer">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6">
+                           <i data-lucide="graduation-cap" class="text-blue-700 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Unified Student Information</h3>
+                        <p class="text-gray-600">Maintain a 360-degree view of every student, managing academics, attendance, health, and progress from a central, secure hub.</p>
+                    </a>
+                     <!-- Feature Card -->
+                    <a href="finance.html" class="bg-white p-8 rounded-xl feature-card reveal delay-2 block cursor-pointer">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6">
+                           <i data-lucide="banknote" class="text-blue-700 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Streamlined Finance</h3>
+                        <p class="text-gray-600">Simplify financial operations with automated fee collection, online payments, grant management, and real-time P&L statements.</p>
+                    </a>
+                     <!-- Feature Card -->
+                    <a href="analytics.html" class="bg-white p-8 rounded-xl feature-card reveal block cursor-pointer">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6">
+                           <i data-lucide="pie-chart" class="text-blue-700 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Actionable Analytics</h3>
+                        <p class="text-gray-600">Leverage AI-powered dashboards to gain deep insights into institutional performance and student behavior, driving data-informed decisions.</p>
+                    </a>
+                     <!-- Feature Card -->
+                    <a href="lms.html" class="bg-white p-8 rounded-xl feature-card reveal delay-1 block cursor-pointer">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6">
+                            <i data-lucide="book-open-check" class="text-blue-700 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Next-Gen LMS</h3>
+                        <p class="text-gray-600">Deliver engaging learning experiences with our LMS, featuring flipped classrooms, live lectures, online quizzes, and collaborative tools.</p>
+                    </a>
+                     <!-- Feature Card -->
+                    <a href="integrations.html" class="bg-white p-8 rounded-xl feature-card reveal delay-2 block cursor-pointer">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6">
+                            <i data-lucide="puzzle" class="text-blue-700 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Seamless Integrations</h3>
+                        <p class="text-gray-600">Connect your favorite tools. Natively integrate with Google Workspace, Office 365, payment gateways, biometrics, and more.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile App Section -->
+        <section id="mobile-app" class="py-24 bg-gray-50 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    <div class="lg:w-1/2 reveal">
+                        <span class="text-blue-600 font-semibold">ALWAYS ON</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Learning and Management in Your Pocket</h2>
+                        <p class="mt-6 text-lg text-gray-600">
+                            Our native iOS and Android apps provide students and faculty with instant access to everything they need, creating a truly connected campus experience.
+                        </p>
+                        <div class="mt-8 space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-blue-100 rounded-lg">
+                                    <i data-lucide="user-check" class="text-blue-600 w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">For Students</h4>
+                                    <p class="text-gray-600">Live classes, grade tracking, fee payments, and collaborative tools at their fingertips.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-green-100 rounded-lg">
+                                    <i data-lucide="clipboard-check" class="text-green-600 w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">For Teachers</h4>
+                                    <p class="text-gray-600">Mobile attendance, grade input, parent communication, and schedule management on the go.</p>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="mt-10 flex gap-4">
+                            <a href="#" class="inline-block transition-transform hover:scale-105"><img src="https://placehold.co/180x60/000000/FFFFFF?text=App+Store" alt="Download on the App Store" class="h-12 rounded-lg shadow-md"></a>
+                            <a href="#" class="inline-block transition-transform hover:scale-105"><img src="https://placehold.co/180x60/000000/FFFFFF?text=Google+Play" alt="Get it on Google Play" class="h-12 rounded-lg shadow-md"></a>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 flex justify-center reveal delay-1">
+                        <div class="bg-white p-4 rounded-3xl shadow-2xl">
+                             <img src="https://placehold.co/400x600/EBF5FF/3B82F6?text=Student+Dashboard" alt="Mobile App Screenshot" class="rounded-2xl max-w-sm w-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 bg-white">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 reveal">Trusted by Leading Institutions</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto reveal delay-1">See how School Chale Hum is making an impact in education.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-xl reveal">
+                        <p class="text-gray-700 italic">"The transition to School Chale Hum was seamless. Their platform consolidated all our disparate systems into one, saving us hundreds of administrative hours per month. The analytics dashboard is a game-changer."</p>
+                        <div class="flex items-center mt-6">
+                            <img src="https://placehold.co/48x48/6366f1/ffffff?text=AD" class="w-12 h-12 rounded-full" alt="Admin photo">
+                            <div class="ml-4">
+                                <p class="font-semibold text-gray-900">Dr. Alisha Desai</p>
+                                <p class="text-sm text-gray-600">Principal, Crestwood International School</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Testimonial Card 2 -->
+                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-xl reveal delay-1">
+                        <p class="text-gray-700 italic">"As a teacher, the mobile app is indispensable. I can manage my classes, communicate with parents, and access student information from anywhere. It has genuinely improved my work-life balance."</p>
+                        <div class="flex items-center mt-6">
+                            <img src="https://placehold.co/48x48/10b981/ffffff?text=MS" class="w-12 h-12 rounded-full" alt="Teacher photo">
+                            <div class="ml-4">
+                                <p class="font-semibold text-gray-900">Michael Stanhope</p>
+                                <p class="text-sm text-gray-600">Lead Educator, Northbridge High</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Testimonial Card 3 -->
+                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-xl reveal delay-2">
+                        <p class="text-gray-700 italic">"The finance module is incredibly robust. Online fee payments have increased our collection rate by over 20%, and the automated reporting has made our audits straightforward and stress-free."</p>
+                        <div class="flex items-center mt-6">
+                            <img src="https://placehold.co/48x48/f59e0b/ffffff?text=RC" class="w-12 h-12 rounded-full" alt="Finance Officer photo">
+                            <div class="ml-4">
+                                <p class="font-semibold text-gray-900">Rhea Chatterjee</p>
+                                <p class="text-sm text-gray-600">Finance Officer, Greenfield University</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 bg-gray-900 text-white relative overflow-hidden">
+             <div class="absolute inset-0 bg-grid-gray-700/20 [mask-image:linear-gradient(to_bottom,white_5%,transparent_90%)]"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold reveal">Ready to Build the Future of Education?</h2>
+                <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto reveal delay-1">
+                    Let's discuss your institution's unique challenges. Schedule a free, no-obligation consultation with our experts to see School Chale Hum in action.
+                </p>
+                <div class="mt-8 reveal delay-2">
+                    <a href="#" class="bg-blue-600 text-white px-10 py-4 rounded-lg font-bold text-lg glow-button inline-block">Schedule My Free Consultation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-gray-400 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        Millennium <span class="text-blue-500">Academy</span>
+                    </h3>
+                    <p>The complete cloud-based OS for managing your educational institution with efficiency and ease.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="hover:text-blue-400">Features</a></li>
+                        <li><a href="#mobile-app" class="hover:text-blue-400">Mobile App</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Pricing</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Login</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Contact</h4>
+                     <ul class="space-y-2">
+                        <li class="flex items-start gap-3">
+                           <i data-lucide="map-pin" class="w-5 h-5 mt-1 flex-shrink-0 text-gray-500"></i>
+                           <span>123 Education Lane, Knowledge City, 12345</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                           <i data-lucide="mail" class="w-5 h-5 flex-shrink-0 text-gray-500"></i>
+                           <span>contact@millennium.academy</span>
+                        </li>
+                         <li class="flex items-center gap-3">
+                           <i data-lucide="phone" class="w-5 h-5 flex-shrink-0 text-gray-500"></i>
+                           <span>+1 (234) 567-890</span>
+                        </li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-semibold text-white mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-500 hover:text-white" aria-label="Follow us on Twitter"><i data-lucide="twitter"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-white" aria-label="Follow us on Facebook"><i data-lucide="facebook"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-white" aria-label="Follow us on LinkedIn"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 School Chale Hum. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // --- Mobile menu toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- Scroll-triggered Animations ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // No need to unobserve, let animation stay
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        revealElements.forEach(elem => {
+            revealObserver.observe(elem);
+        });
+    </script>
+</body>
+</html>
+
