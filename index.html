@@ -92,6 +92,152 @@
         .feature-icon-bg {
             background: linear-gradient(135deg, #dbeafe, #c7d2fe);
         }
+
+        /* -- Advanced Animations -- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.3; }
+            100% { transform: scale(0.8); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes drawLine {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .pulse-ring {
+            animation: pulse-ring 2s ease-in-out infinite;
+        }
+
+        .stat-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+        }
+
+        .timeline-dot {
+            transition: all 0.3s ease;
+        }
+
+        .timeline-dot:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .comparison-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .comparison-card:hover::before {
+            left: 100%;
+        }
+
+        .ecosystem-node {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .ecosystem-node:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+        }
+
+        .metric-bar {
+            transition: width 1.5s ease-out;
+        }
+
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Animation Delay Utilities */
+        .anim-delay-0-2s { animation-delay: 0.2s; }
+        .anim-delay-0-5s { animation-delay: 0.5s; }
+        .anim-delay-1s { animation-delay: 1s; }
+        .anim-delay-1-5s { animation-delay: 1.5s; }
+        .anim-delay-2s { animation-delay: 2s; }
+        .anim-delay-2-5s { animation-delay: 2.5s; }
+        .anim-delay-4s { animation-delay: 4s; }
+
+        /* Width Utilities */
+        .w-0-pct { width: 0%; }
+
+        /* Chart Height Utilities */
+        .chart-h-60 { height: 60%; }
+        .chart-h-70 { height: 70%; }
+        .chart-h-75 { height: 75%; }
+        .chart-h-85 { height: 85%; }
+        .chart-h-90 { height: 90%; }
+        .chart-h-100 { height: 100%; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -138,6 +284,411 @@
                 <div class="mt-10 flex justify-center gap-4 flex-wrap reveal delay-2">
                     <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg glow-button">Book a Personalized Demo</a>
                     <a href="#features" class="bg-white text-gray-800 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all hover:scale-105 border border-gray-300 shadow-sm hover:shadow-lg">Discover Features</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI Statistics Section -->
+        <section class="py-20 bg-gradient-to-br from-blue-600 to-indigo-700 text-white relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-20 left-20 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+                <div class="absolute bottom-20 right-20 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
+            </div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-extrabold">Transform Your Institution's Performance</h2>
+                    <p class="mt-4 text-xl text-blue-100 max-w-3xl mx-auto">Real results from institutions using School Chale Hum ERP</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Stat Card 1 -->
+                    <div class="stat-card bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center border border-white/20 reveal">
+                        <div class="text-5xl font-extrabold counter" data-target="85">0</div>
+                        <div class="text-2xl font-bold mt-2">%</div>
+                        <p class="mt-4 text-blue-100 font-medium">Reduction in Administrative Time</p>
+                    </div>
+                    <!-- Stat Card 2 -->
+                    <div class="stat-card bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center border border-white/20 reveal delay-1">
+                        <div class="text-5xl font-extrabold counter" data-target="40">0</div>
+                        <div class="text-2xl font-bold mt-2">%</div>
+                        <p class="mt-4 text-blue-100 font-medium">Increase in Fee Collection Rate</p>
+                    </div>
+                    <!-- Stat Card 3 -->
+                    <div class="stat-card bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center border border-white/20 reveal delay-2">
+                        <div class="text-5xl font-extrabold counter" data-target="95">0</div>
+                        <div class="text-2xl font-bold mt-2">%</div>
+                        <p class="mt-4 text-blue-100 font-medium">Parent Satisfaction Score</p>
+                    </div>
+                    <!-- Stat Card 4 -->
+                    <div class="stat-card bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center border border-white/20 reveal delay-3">
+                        <div class="text-5xl font-extrabold counter" data-target="60">0</div>
+                        <div class="text-2xl font-bold mt-2">%</div>
+                        <p class="mt-4 text-blue-100 font-medium">Faster Report Generation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before vs After Comparison Section -->
+        <section class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900">See The Difference</h2>
+                    <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Experience the transformation from traditional management to intelligent automation</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Before Card -->
+                    <div class="comparison-card bg-red-50 border-2 border-red-200 rounded-2xl p-8 reveal">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-red-100 p-3 rounded-full">
+                                <i data-lucide="x-circle" class="text-red-600 w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 ml-4">Without ERP</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-circle" class="text-red-500 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">Manual data entry leading to errors and duplicates</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-circle" class="text-red-500 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">Disconnected systems causing communication gaps</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-circle" class="text-red-500 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">Delayed fee payments and cash flow issues</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-circle" class="text-red-500 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">Hours spent generating reports manually</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-circle" class="text-red-500 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">Limited visibility into institutional performance</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="alert-circle" class="text-red-500 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">Parents frustrated with lack of transparency</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- After Card -->
+                    <div class="comparison-card bg-green-50 border-2 border-green-200 rounded-2xl p-8 reveal delay-1">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-green-100 p-3 rounded-full">
+                                <i data-lucide="check-circle" class="text-green-600 w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 ml-4">With School Chale Hum</h3>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="text-green-600 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">Automated data sync across all modules in real-time</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="text-green-600 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">Unified platform connecting students, staff, and parents</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="text-green-600 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">Online payment gateway with instant confirmations</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="text-green-600 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">One-click reports with customizable dashboards</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="text-green-600 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">AI-powered insights for data-driven decisions</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="text-green-600 w-5 h-5 mt-1 flex-shrink-0"></i>
+                                <span class="text-gray-700">24/7 parent portal with live updates and notifications</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERP Ecosystem Visualization Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900">Complete Ecosystem Integration</h2>
+                    <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">All your institutional operations connected through one intelligent platform</p>
+                </div>
+                <div class="max-w-5xl mx-auto relative">
+                    <!-- Central Hub -->
+                    <div class="flex justify-center mb-12 reveal">
+                        <div class="ecosystem-node bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-3xl p-10 shadow-2xl relative">
+                            <div class="pulse-ring absolute inset-0 rounded-3xl bg-blue-400 -z-10"></div>
+                            <div class="text-center">
+                                <i data-lucide="globe" class="w-16 h-16 mx-auto mb-4"></i>
+                                <h3 class="text-2xl font-bold">School Chale Hum</h3>
+                                <p class="text-blue-100 mt-2">Central ERP Hub</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Connected Modules -->
+                    <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div class="ecosystem-node bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-xl p-6 text-center shadow-lg reveal">
+                            <i data-lucide="users" class="w-10 h-10 mx-auto mb-3"></i>
+                            <h4 class="font-bold">Admissions</h4>
+                        </div>
+                        <div class="ecosystem-node bg-gradient-to-br from-blue-500 to-cyan-500 text-white rounded-xl p-6 text-center shadow-lg reveal delay-1">
+                            <i data-lucide="graduation-cap" class="w-10 h-10 mx-auto mb-3"></i>
+                            <h4 class="font-bold">Student Info</h4>
+                        </div>
+                        <div class="ecosystem-node bg-gradient-to-br from-green-500 to-emerald-500 text-white rounded-xl p-6 text-center shadow-lg reveal delay-2">
+                            <i data-lucide="dollar-sign" class="w-10 h-10 mx-auto mb-3"></i>
+                            <h4 class="font-bold">Finance</h4>
+                        </div>
+                        <div class="ecosystem-node bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-xl p-6 text-center shadow-lg reveal delay-3">
+                            <i data-lucide="bar-chart-3" class="w-10 h-10 mx-auto mb-3"></i>
+                            <h4 class="font-bold">Analytics</h4>
+                        </div>
+                        <div class="ecosystem-node bg-gradient-to-br from-yellow-500 to-amber-500 text-white rounded-xl p-6 text-center shadow-lg reveal">
+                            <i data-lucide="book-open" class="w-10 h-10 mx-auto mb-3"></i>
+                            <h4 class="font-bold">LMS</h4>
+                        </div>
+                        <div class="ecosystem-node bg-gradient-to-br from-indigo-500 to-purple-500 text-white rounded-xl p-6 text-center shadow-lg reveal delay-1">
+                            <i data-lucide="calendar" class="w-10 h-10 mx-auto mb-3"></i>
+                            <h4 class="font-bold">Scheduling</h4>
+                        </div>
+                        <div class="ecosystem-node bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-xl p-6 text-center shadow-lg reveal delay-2">
+                            <i data-lucide="mail" class="w-10 h-10 mx-auto mb-3"></i>
+                            <h4 class="font-bold">Communication</h4>
+                        </div>
+                        <div class="ecosystem-node bg-gradient-to-br from-cyan-500 to-blue-500 text-white rounded-xl p-6 text-center shadow-lg reveal delay-3">
+                            <i data-lucide="shield-check" class="w-10 h-10 mx-auto mb-3"></i>
+                            <h4 class="font-bold">Security</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Metrics Dashboard Preview -->
+        <section class="py-24 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-extrabold">Real-Time Dashboard Insights</h2>
+                    <p class="mt-4 text-xl text-gray-300 max-w-3xl mx-auto">Monitor your institution's pulse with live metrics and AI-powered analytics</p>
+                </div>
+                <div class="max-w-6xl mx-auto">
+                    <!-- Dashboard Cards -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                        <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 reveal">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-sm font-semibold text-gray-300">Total Students</h4>
+                                <i data-lucide="users" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <div class="text-3xl font-bold counter" data-target="2845">0</div>
+                            <div class="mt-2 flex items-center text-sm">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-green-400 mr-1"></i>
+                                <span class="text-green-400">+12% from last year</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 reveal delay-1">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-sm font-semibold text-gray-300">Fee Collection</h4>
+                                <i data-lucide="dollar-sign" class="w-5 h-5 text-green-400"></i>
+                            </div>
+                            <div class="text-3xl font-bold counter" data-target="94">0</div>
+                            <span class="text-2xl font-bold">%</span>
+                            <div class="mt-2 flex items-center text-sm">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-green-400 mr-1"></i>
+                                <span class="text-green-400">+8% this month</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 reveal delay-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-sm font-semibold text-gray-300">Avg Attendance</h4>
+                                <i data-lucide="user-check" class="w-5 h-5 text-purple-400"></i>
+                            </div>
+                            <div class="text-3xl font-bold counter" data-target="92">0</div>
+                            <span class="text-2xl font-bold">%</span>
+                            <div class="mt-2 flex items-center text-sm">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400 mr-1"></i>
+                                <span class="text-gray-300">Excellent</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 reveal delay-3">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-sm font-semibold text-gray-300">Active Courses</h4>
+                                <i data-lucide="book-open" class="w-5 h-5 text-yellow-400"></i>
+                            </div>
+                            <div class="text-3xl font-bold counter" data-target="156">0</div>
+                            <div class="mt-2 flex items-center text-sm">
+                                <i data-lucide="activity" class="w-4 h-4 text-blue-400 mr-1"></i>
+                                <span class="text-gray-300">All active</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Performance Metrics Bars -->
+                    <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 reveal">
+                        <h3 class="text-xl font-bold mb-6">Department Performance Overview</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium">Academic Excellence</span>
+                                    <span class="text-sm font-bold">96%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-3">
+                                    <div class="metric-bar bg-gradient-to-r from-blue-500 to-cyan-500 h-3 rounded-full w-0-pct" data-width="96"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium">Student Engagement</span>
+                                    <span class="text-sm font-bold">88%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-3">
+                                    <div class="metric-bar bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full w-0-pct" data-width="88"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium">Parent Satisfaction</span>
+                                    <span class="text-sm font-bold">94%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-3">
+                                    <div class="metric-bar bg-gradient-to-r from-green-500 to-emerald-500 h-3 rounded-full w-0-pct" data-width="94"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-medium">Operational Efficiency</span>
+                                    <span class="text-sm font-bold">91%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-3">
+                                    <div class="metric-bar bg-gradient-to-r from-yellow-500 to-orange-500 h-3 rounded-full w-0-pct" data-width="91"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900">Why Leading Institutions Choose Us</h2>
+                    <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Enterprise-grade features built specifically for education</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-100 hover:border-blue-300 transition-all reveal">
+                        <div class="bg-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation">
+                            <i data-lucide="shield-check" class="text-white w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Bank-Level Security</h3>
+                        <p class="text-gray-600">256-bit encryption, role-based access control, and GDPR compliance to protect sensitive student data.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-100 hover:border-purple-300 transition-all reveal delay-1">
+                        <div class="bg-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-0-5s">
+                            <i data-lucide="zap" class="text-white w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Lightning Fast</h3>
+                        <p class="text-gray-600">Cloud-native architecture ensures 99.9% uptime with sub-second response times globally.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-100 hover:border-green-300 transition-all reveal delay-2">
+                        <div class="bg-green-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-1s">
+                            <i data-lucide="users-round" class="text-white w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">24/7 Expert Support</h3>
+                        <p class="text-gray-600">Dedicated account managers and technical support team available round the clock.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 border-2 border-orange-100 hover:border-orange-300 transition-all reveal">
+                        <div class="bg-orange-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-1-5s">
+                            <i data-lucide="trending-up" class="text-white w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Scalable Growth</h3>
+                        <p class="text-gray-600">From 100 to 10,000+ students, our platform grows seamlessly with your institution.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 border-2 border-cyan-100 hover:border-cyan-300 transition-all reveal delay-1">
+                        <div class="bg-cyan-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-2s">
+                            <i data-lucide="smartphone" class="text-white w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Mobile-First Design</h3>
+                        <p class="text-gray-600">Native iOS and Android apps for students, parents, and staff to stay connected anywhere.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-8 border-2 border-yellow-100 hover:border-yellow-300 transition-all reveal delay-2">
+                        <div class="bg-yellow-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-2-5s">
+                            <i data-lucide="brain" class="text-white w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">AI-Powered Insights</h3>
+                        <p class="text-gray-600">Machine learning algorithms predict trends, identify at-risk students, and optimize operations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Timeline -->
+        <section class="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900">Get Started in 4 Simple Steps</h2>
+                    <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">From consultation to go-live in as little as 30 days</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="relative">
+                        <!-- Timeline Line -->
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-600 to-indigo-600"></div>
+                        
+                        <!-- Step 1 -->
+                        <div class="relative mb-16 reveal">
+                            <div class="flex flex-col md:flex-row items-center">
+                                <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 text-center md:text-right">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Discovery & Planning</h3>
+                                    <p class="text-gray-600">Understand your unique requirements, map existing processes, and create a customized implementation roadmap.</p>
+                                    <p class="text-sm text-blue-600 font-semibold mt-2">Week 1</p>
+                                </div>
+                                <div class="timeline-dot relative z-10 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">1</div>
+                                <div class="md:w-1/2 md:pl-12"></div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative mb-16 reveal delay-1">
+                            <div class="flex flex-col md:flex-row items-center">
+                                <div class="md:w-1/2 md:pr-12"></div>
+                                <div class="timeline-dot relative z-10 w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">2</div>
+                                <div class="md:w-1/2 md:pl-12 mt-6 md:mt-0 text-center md:text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Data Migration & Setup</h3>
+                                    <p class="text-gray-600">Seamlessly migrate existing student, financial, and academic data with zero downtime. Configure modules to match your workflows.</p>
+                                    <p class="text-sm text-indigo-600 font-semibold mt-2">Week 2-3</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative mb-16 reveal delay-2">
+                            <div class="flex flex-col md:flex-row items-center">
+                                <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 text-center md:text-right">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Training & Onboarding</h3>
+                                    <p class="text-gray-600">Comprehensive training sessions for staff, teachers, and administrators. Access to video tutorials and documentation.</p>
+                                    <p class="text-sm text-purple-600 font-semibold mt-2">Week 3-4</p>
+                                </div>
+                                <div class="timeline-dot relative z-10 w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">3</div>
+                                <div class="md:w-1/2 md:pl-12"></div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="relative reveal delay-3">
+                            <div class="flex flex-col md:flex-row items-center">
+                                <div class="md:w-1/2 md:pr-12"></div>
+                                <div class="timeline-dot relative z-10 w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">4</div>
+                                <div class="md:w-1/2 md:pl-12 mt-6 md:mt-0 text-center md:text-left">
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Go Live & Support</h3>
+                                    <p class="text-gray-600">Launch with confidence. Dedicated support team monitors system performance and assists users during the transition.</p>
+                                    <p class="text-sm text-green-600 font-semibold mt-2">Week 4+</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -312,7 +863,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="mb-6 md:mb-0">
                     <h3 class="text-xl font-bold text-white mb-4">
-                        Millennium <span class="text-blue-500">Academy</span>
+                        School Chale <span class="text-blue-500">Hum</span>
                     </h3>
                     <p>The complete cloud-based OS for managing your educational institution with efficiency and ease.</p>
                 </div>
@@ -330,24 +881,24 @@
                      <ul class="space-y-2">
                         <li class="flex items-start gap-3">
                            <i data-lucide="map-pin" class="w-5 h-5 mt-1 flex-shrink-0 text-gray-500"></i>
-                           <span>123 Education Lane, Knowledge City, 12345</span>
+                           <span>Kota, City, 324009</span>
                         </li>
                         <li class="flex items-center gap-3">
                            <i data-lucide="mail" class="w-5 h-5 flex-shrink-0 text-gray-500"></i>
-                           <span>contact@millennium.academy</span>
+                           <a href="mailto:lalitchoudhary112000@gmail.com" class="hover:text-blue-400">lalitchoudhary112000@gmail.com</a>
                         </li>
                          <li class="flex items-center gap-3">
                            <i data-lucide="phone" class="w-5 h-5 flex-shrink-0 text-gray-500"></i>
-                           <span>+1 (234) 567-890</span>
+                           <a href="tel:+918239589147" class="hover:text-blue-400">+91 8239589147</a>
                         </li>
                     </ul>
                 </div>
                  <div>
                     <h4 class="font-semibold text-white mb-4">Follow Us</h4>
                     <div class="flex space-x-4">
+                        <a href="https://github.com/lavish112000" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white" aria-label="Follow us on GitHub"><i data-lucide="github"></i></a>
+                        <a href="https://www.linkedin.com/in/lalit11" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white" aria-label="Follow us on LinkedIn"><i data-lucide="linkedin"></i></a>
                         <a href="#" class="text-gray-500 hover:text-white" aria-label="Follow us on Twitter"><i data-lucide="twitter"></i></a>
-                        <a href="#" class="text-gray-500 hover:text-white" aria-label="Follow us on Facebook"><i data-lucide="facebook"></i></a>
-                        <a href="#" class="text-gray-500 hover:text-white" aria-label="Follow us on LinkedIn"><i data-lucide="linkedin"></i></a>
                     </div>
                 </div>
             </div>
@@ -389,6 +940,64 @@
 
         revealElements.forEach(elem => {
             revealObserver.observe(elem);
+        });
+
+        // --- Counter Animation ---
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+
+            updateCounter();
+        }
+
+        // Observe counters and animate when visible
+        const counterElements = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        counterElements.forEach(elem => {
+            counterObserver.observe(elem);
+        });
+
+        // --- Metric Bar Animation ---
+        const metricBars = document.querySelectorAll('.metric-bar');
+        const barObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    const targetWidth = bar.getAttribute('data-width');
+                    setTimeout(() => {
+                        bar.style.width = targetWidth + '%';
+                    }, 200);
+                    observer.unobserve(bar);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        metricBars.forEach(bar => {
+            barObserver.observe(bar);
         });
     </script>
 </body>
