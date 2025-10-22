@@ -263,7 +263,7 @@
             perspective: 1000px;
             border: 3px solid rgba(59, 130, 246, 0.2);
             background: linear-gradient(145deg, #ffffff, #f0f9ff);
-            overflow: visible !important;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
@@ -344,7 +344,7 @@
         .feature-icon-bg {
             transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
-            overflow: visible !important;
+            overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
@@ -1171,6 +1171,23 @@
 
         revealElements.forEach(elem => {
             revealObserver.observe(elem);
+        });
+
+        // --- Feature Card Animations with Scroll Trigger ---
+        const featureCards = document.querySelectorAll('.reveal-feature');
+        const featureObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animation will play automatically due to CSS
+                    // No need to unobserve
+                }
+            });
+        }, {
+            threshold: 0.15 // Trigger when 15% visible
+        });
+
+        featureCards.forEach(card => {
+            featureObserver.observe(card);
         });
 
         // --- Counter Animation ---
