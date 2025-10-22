@@ -204,15 +204,11 @@
 
         @keyframes borderGlow {
             0%, 100% { 
-                box-shadow: 0 50px 100px -20px rgba(59, 130, 246, 0.8),
-                           0 30px 60px -15px rgba(59, 130, 246, 0.6),
-                           0 0 30px rgba(59, 130, 246, 0.6),
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
                            inset 0 0 20px rgba(59, 130, 246, 0.2);
             }
             50% { 
-                box-shadow: 0 50px 100px -20px rgba(139, 92, 246, 0.9),
-                           0 30px 60px -15px rgba(236, 72, 153, 0.7),
-                           0 0 50px rgba(139, 92, 246, 0.8),
+                box-shadow: 0 0 40px rgba(139, 92, 246, 0.8),
                            inset 0 0 30px rgba(139, 92, 246, 0.4);
             }
         }
@@ -309,14 +305,12 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-30px) rotateX(10deg) rotateY(2deg) scale(1.12) !important;
-            box-shadow: 0 50px 100px -20px rgba(59, 130, 246, 0.8),
-                       0 30px 60px -15px rgba(59, 130, 246, 0.6),
-                       0 20px 40px -10px rgba(139, 92, 246, 0.5),
-                       0 0 0 2px rgba(59, 130, 246, 0.4),
-                       inset 0 0 30px rgba(59, 130, 246, 0.1);
-            border-color: rgba(59, 130, 246, 1);
-            background: linear-gradient(145deg, #f0f9ff, #dbeafe, #e0e7ff) !important;
+            transform: translateY(-25px) rotateX(8deg) scale(1.08) !important;
+            box-shadow: 0 40px 80px -20px rgba(59, 130, 246, 0.6),
+                       0 20px 40px -15px rgba(139, 92, 246, 0.5),
+                       0 0 0 1px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.8);
+            background: linear-gradient(145deg, #ffffff, #dbeafe);
             animation: borderGlow 2s ease-in-out infinite;
         }
 
@@ -331,29 +325,20 @@
 
         .feature-card:hover .feature-icon-bg {
             animation: iconBounce 1s ease infinite, glowPulse 2s ease infinite;
-            transform: scale(1.5) rotate(360deg) !important;
-            box-shadow: 0 15px 50px rgba(59, 130, 246, 0.9),
-                       0 10px 30px rgba(139, 92, 246, 0.7),
-                       inset 0 0 30px rgba(255, 255, 255, 0.5) !important;
+            transform: scale(1.3) rotate(360deg);
         }
 
         .feature-card h3 {
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .feature-card:hover h3 {
-            color: #2563eb !important;
-            transform: translateX(10px) scale(1.05);
-            text-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
-        }
-
-        .feature-card p {
             transition: all 0.4s ease;
         }
 
-        .feature-card:hover p {
-            color: #1e40af !important;
+        .feature-card:hover h3 {
+            color: #3b82f6;
             transform: translateX(5px);
+        }
+
+        .feature-card:hover p {
+            color: #1e40af;
         }
 
         .feature-icon-bg {
