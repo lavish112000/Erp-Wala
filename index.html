@@ -380,7 +380,14 @@
         /* Staggered reveal animation - MORE DRAMATIC */
         .reveal-feature {
             animation: slideInScale 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-play-state: running;
             opacity: 0;
+        }
+
+        /* Force animation to run */
+        .reveal-feature.loaded {
+            animation: slideInScale 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+                       featureFloat 5s ease-in-out infinite;
         }
 
         .reveal-feature.delay-1 { animation-delay: 0.1s; }
@@ -389,18 +396,6 @@
         .reveal-feature.delay-4 { animation-delay: 0.4s; }
         .reveal-feature.delay-5 { animation-delay: 0.5s; }
         .reveal-feature.delay-6 { animation-delay: 0.6s; }
-
-        /* Floating effect on idle - MORE VISIBLE */
-        .feature-card.loaded {
-            animation: featureFloat 5s ease-in-out infinite;
-        }
-
-        .feature-card.loaded:nth-child(1) { animation-delay: 0s; }
-        .feature-card.loaded:nth-child(2) { animation-delay: 0.8s; }
-        .feature-card.loaded:nth-child(3) { animation-delay: 1.6s; }
-        .feature-card.loaded:nth-child(4) { animation-delay: 2.4s; }
-        .feature-card.loaded:nth-child(5) { animation-delay: 3.2s; }
-        .feature-card.loaded:nth-child(6) { animation-delay: 4s; }
 
         .timeline-dot {
             transition: all 0.3s ease;
