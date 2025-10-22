@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Test - School Chale Hum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f3f4f6;
+            padding: 40px;
+        }
+
+        /* TEST CARD ANIMATIONS */
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .test-card {
+            animation: slideIn 1s ease-out forwards;
+            transition: all 0.5s ease;
+            background: white;
+            border: 3px solid #3b82f6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .test-card:hover {
+            transform: translateY(-20px) scale(1.1) rotate(2deg) !important;
+            box-shadow: 0 30px 60px rgba(59, 130, 246, 0.6) !important;
+            border-color: #8b5cf6 !important;
+            background: linear-gradient(145deg, #dbeafe, #e0e7ff) !important;
+        }
+
+        .test-icon {
+            transition: all 0.6s ease;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .test-card:hover .test-icon {
+            transform: scale(1.4) rotate(360deg) !important;
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.8) !important;
+        }
+
+        .test-card h3 {
+            transition: all 0.3s ease;
+        }
+
+        .test-card:hover h3 {
+            color: #3b82f6 !important;
+            transform: translateX(10px);
+        }
+
+        .floating {
+            animation: floatUp 3s ease-in-out infinite;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="max-w-7xl mx-auto">
+        <!-- Test Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-gray-900 mb-4">🎨 Animation Test Page</h1>
+            <p class="text-xl text-gray-600">If you can see this text and colorful cards below, the page is loading correctly!</p>
+            <p class="text-lg text-blue-600 mt-2">Hover over the cards to see the animation effects</p>
+        </div>
+
+        <!-- Test Cards Grid -->
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <!-- Test Card 1 -->
+            <div class="test-card p-8 rounded-xl cursor-pointer">
+                <div class="test-icon w-16 h-16 rounded-lg flex items-center justify-center mb-6">
+                    <i data-lucide="rocket" class="w-8 h-8 text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-gray-900">Test Card 1</h3>
+                <p class="text-gray-600">Hover over me to see dramatic lift, rotation, and scale effects! 🚀</p>
+            </div>
+
+            <!-- Test Card 2 -->
+            <div class="test-card delay-1 p-8 rounded-xl cursor-pointer">
+                <div class="test-icon w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-gradient-to-br from-green-500 to-teal-600">
+                    <i data-lucide="sparkles" class="w-8 h-8 text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-gray-900">Test Card 2</h3>
+                <p class="text-gray-600">Watch the icon rotate 360° and the card background change color! ✨</p>
+            </div>
+
+            <!-- Test Card 3 -->
+            <div class="test-card delay-2 p-8 rounded-xl cursor-pointer">
+                <div class="test-icon w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-gradient-to-br from-purple-500 to-pink-600">
+                    <i data-lucide="heart" class="w-8 h-8 text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-gray-900">Test Card 3</h3>
+                <p class="text-gray-600">Notice the heading turns blue and slides to the right on hover! 💙</p>
+            </div>
+        </div>
+
+        <!-- Floating Cards Test -->
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Continuous Floating Animation Test</h2>
+            <p class="text-gray-600">These cards should float up and down continuously</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="test-card floating p-8 rounded-xl">
+                <div class="test-icon w-16 h-16 rounded-lg flex items-center justify-center mb-4 bg-gradient-to-br from-yellow-500 to-orange-600">
+                    <i data-lucide="sun" class="w-8 h-8 text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Floating 1</h3>
+            </div>
+
+            <div class="test-card floating delay-1 p-8 rounded-xl">
+                <div class="test-icon w-16 h-16 rounded-lg flex items-center justify-center mb-4 bg-gradient-to-br from-red-500 to-rose-600">
+                    <i data-lucide="flame" class="w-8 h-8 text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Floating 2</h3>
+            </div>
+
+            <div class="test-card floating delay-2 p-8 rounded-xl">
+                <div class="test-icon w-16 h-16 rounded-lg flex items-center justify-center mb-4 bg-gradient-to-br from-indigo-500 to-blue-600">
+                    <i data-lucide="zap" class="w-8 h-8 text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Floating 3</h3>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="mt-12 p-8 bg-blue-50 rounded-xl border-2 border-blue-200">
+            <h2 class="text-2xl font-bold text-blue-900 mb-4">✅ What You Should See:</h2>
+            <ul class="space-y-2 text-blue-800">
+                <li>✓ This page with a gray background</li>
+                <li>✓ Six white cards with colored icons</li>
+                <li>✓ Cards sliding in from bottom when page loads</li>
+                <li>✓ Bottom three cards floating up and down continuously</li>
+                <li>✓ On hover: cards lift dramatically, tilt, scale up, change colors</li>
+                <li>✓ Icons rotate 360° and glow on hover</li>
+                <li>✓ Large blue shadows under cards on hover</li>
+            </ul>
+            <div class="mt-6 p-4 bg-yellow-100 border-2 border-yellow-400 rounded-lg">
+                <p class="text-yellow-900 font-semibold">⚠️ If you can't see anything or only white background:</p>
+                <ul class="mt-2 space-y-1 text-yellow-800 text-sm">
+                    <li>1. Make sure you opened this file in a web browser (Chrome, Edge, Firefox)</li>
+                    <li>2. Check browser console for errors (Press F12)</li>
+                    <li>3. Try a different browser</li>
+                    <li>4. Disable browser extensions temporarily</li>
+                    <li>5. Make sure JavaScript is enabled</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Log to console for debugging
+        console.log('✅ Test page loaded successfully!');
+        console.log('📦 Lucide icons initialized');
+        console.log('🎨 If you see this in console, JavaScript is working!');
+    </script>
+</body>
+</html>
