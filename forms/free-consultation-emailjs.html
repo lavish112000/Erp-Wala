@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Free Consultation - School Chale Hum</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Form animation */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-container {
+            animation: slideInUp 0.5s ease-out;
+        }
+        
+        /* Success message animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .success-message {
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #16a34a;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-emerald-100 min-h-screen flex items-center justify-center px-4 py-8">
+    
+    <div class="form-container bg-white rounded-2xl shadow-2xl max-w-md w-full p-8">
+        <!-- Form Header -->
+        <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="phone-call" class="text-green-600 w-10 h-10"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Schedule Free Consultation</h1>
+            <p class="text-gray-600">Let's discuss how we can help your institution</p>
+        </div>
+        
+        <!-- Success Message (Hidden by default) -->
+        <div id="success-message" class="hidden success-message mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div class="flex items-center">
+                <i data-lucide="check-circle" class="text-green-600 w-6 h-6 mr-2"></i>
+                <div>
+                    <p class="text-green-800 font-semibold">Success!</p>
+                    <p class="text-green-700 text-sm">Your consultation has been scheduled successfully.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Error Message (Hidden by default) -->
+        <div id="error-message" class="hidden mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div class="flex items-center">
+                <i data-lucide="alert-circle" class="text-red-600 w-6 h-6 mr-2"></i>
+                <div>
+                    <p class="text-red-800 font-semibold">Error!</p>
+                    <p class="text-red-700 text-sm">Something went wrong. Please try again.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Consultation Form -->
+        <form id="consultation-form" class="space-y-5">
+            <!-- Honeypot field for spam protection -->
+            <input type="text" name="honeypot" class="hidden" tabindex="-1" autocomplete="off" aria-label="Leave this field empty">
+            
+            <!-- Full Name -->
+            <div>
+                <label for="full-name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                <input type="text" id="full-name" name="full_name" required 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                       placeholder="John Doe">
+            </div>
+            
+            <!-- Email Address -->
+            <div>
+                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                <input type="email" id="email" name="email" required 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                       placeholder="john@example.com">
+            </div>
+            
+            <!-- Phone Number -->
+            <div>
+                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                       placeholder="+1 (555) 000-0000">
+            </div>
+            
+            <!-- Institution Name -->
+            <div>
+                <label for="institution" class="block text-sm font-semibold text-gray-700 mb-2">Institution Name *</label>
+                <input type="text" id="institution" name="institution_name" required 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                       placeholder="ABC School">
+            </div>
+            
+            <!-- Your Role -->
+            <div>
+                <label for="role" class="block text-sm font-semibold text-gray-700 mb-2">Your Role *</label>
+                <select id="role" name="role" required 
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                    <option value="">Select your role...</option>
+                    <option value="Principal/Director">Principal/Director</option>
+                    <option value="Administrator">Administrator</option>
+                    <option value="IT Manager">IT Manager</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <!-- Number of Students -->
+            <div>
+                <label for="students" class="block text-sm font-semibold text-gray-700 mb-2">Number of Students</label>
+                <select id="students" name="number_of_students" 
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                    <option value="">Select range...</option>
+                    <option value="1-100">1-100</option>
+                    <option value="101-500">101-500</option>
+                    <option value="501-1000">501-1000</option>
+                    <option value="1000+">1000+</option>
+                </select>
+            </div>
+            
+            <!-- Message -->
+            <div>
+                <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                <textarea id="message" name="message" rows="4" 
+                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                          placeholder="Tell us about your challenges..."></textarea>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                Schedule My Consultation
+            </button>
+            
+            <!-- Back to Home -->
+            <a href="../index.html" class="block text-center text-green-600 hover:text-green-700 font-medium mt-4">
+                ← Back to Home
+            </a>
+        </form>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Initialize EmailJS with your Public Key
+        emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+        
+        // Form submission handler
+        document.getElementById('consultation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check honeypot
+            if (this.honeypot.value) {
+                return; // Spam detected
+            }
+            
+            // Get form elements
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnSpinner = document.getElementById('btn-spinner');
+            const successMsg = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+            btnSpinner.classList.remove('hidden');
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+            
+            // Prepare template parameters
+            const templateParams = {
+                form_type: 'Free Consultation Request',
+                full_name: this.full_name.value,
+                email: this.email.value,
+                phone: this.phone.value,
+                institution_name: this.institution_name.value,
+                role: this.role.value,
+                number_of_students: this.number_of_students.value || 'Not specified',
+                message: this.message.value || 'No message provided',
+                submission_date: new Date().toLocaleString()
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_x4eo2tt', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    successMsg.classList.remove('hidden');
+                    
+                    // Reset form
+                    document.getElementById('consultation-form').reset();
+                    
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Schedule Consultation';
+                    btnSpinner.classList.add('hidden');
+                    
+                    // Reinitialize icons
+                    lucide.createIcons();
+                    
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message
+                    errorMsg.classList.remove('hidden');
+                    
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Schedule Consultation';
+                    btnSpinner.classList.add('hidden');
+                });
+        });
+    </script>
+</body>
+</html>

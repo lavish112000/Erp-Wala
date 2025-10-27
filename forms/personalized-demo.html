@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book a Personalized Demo - School Chale Hum</title>
+    <title>Book Personalized Demo - Millennium Academy</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -37,31 +34,6 @@
         .form-container {
             animation: slideInUp 0.5s ease-out;
         }
-        
-        /* Success message animation */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .success-message {
-            animation: fadeIn 0.3s ease-in;
-        }
-        
-        /* Loading spinner */
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #9333ea;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-purple-50 to-pink-100 min-h-screen flex items-center justify-center px-4 py-8">
@@ -72,88 +44,68 @@
             <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i data-lucide="video" class="text-purple-600 w-10 h-10"></i>
             </div>
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Book a Personalized Demo</h1>
-            <p class="text-gray-600">Get a customized walkthrough tailored to your needs</p>
-        </div>
-        
-        <!-- Success Message (Hidden by default) -->
-        <div id="success-message" class="hidden success-message mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-            <div class="flex items-center">
-                <i data-lucide="check-circle" class="text-green-600 w-6 h-6 mr-2"></i>
-                <div>
-                    <p class="text-green-800 font-semibold">Success!</p>
-                    <p class="text-green-700 text-sm">Your personalized demo has been scheduled.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Error Message (Hidden by default) -->
-        <div id="error-message" class="hidden mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <div class="flex items-center">
-                <i data-lucide="alert-circle" class="text-red-600 w-6 h-6 mr-2"></i>
-                <div>
-                    <p class="text-red-800 font-semibold">Error!</p>
-                    <p class="text-red-700 text-sm">Something went wrong. Please try again.</p>
-                </div>
-            </div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Book Personalized Demo</h1>
+            <p class="text-gray-600">Schedule a customized demo session for your institution</p>
         </div>
         
         <!-- Personalized Demo Form -->
-        <form id="personalized-demo-form" class="space-y-5">
-            <!-- Honeypot field for spam protection -->
-            <input type="text" name="honeypot" class="hidden" tabindex="-1" autocomplete="off" aria-label="Leave this field empty">
+        <form action="https://formsubmit.co/lalitchoudhary112000@gmail.com" method="POST" class="space-y-4">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="New Personalized Demo Request from Millennium Academy">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-label="Leave this field empty">
             
             <!-- Full Name -->
             <div>
-                <label for="full-name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
-                <input type="text" id="full-name" name="full_name" required 
+                <label for="full-name" class="block text-gray-700 font-medium mb-2">Full Name *</label>
+                <input type="text" id="full-name" name="Full_Name" required
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                       placeholder="John Doe">
+                       placeholder="Enter your full name">
             </div>
             
-            <!-- Email Address -->
+            <!-- Email -->
             <div>
-                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
-                <input type="email" id="email" name="email" required 
+                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                <input type="email" id="email" name="Email" required
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                       placeholder="john@example.com">
+                       placeholder="your.email@example.com">
             </div>
             
-            <!-- Phone Number -->
+            <!-- Phone -->
             <div>
-                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number *</label>
-                <input type="tel" id="phone" name="phone" required 
+                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number *</label>
+                <input type="tel" id="phone" name="Phone" required
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                       placeholder="+1 (555) 000-0000">
+                       placeholder="+91 98765 43210">
             </div>
             
-            <!-- Institution Name -->
+            <!-- Institution -->
             <div>
-                <label for="institution" class="block text-sm font-semibold text-gray-700 mb-2">Institution Name *</label>
-                <input type="text" id="institution" name="institution_name" required 
+                <label for="institution" class="block text-gray-700 font-medium mb-2">Institution Name *</label>
+                <input type="text" id="institution" name="Institution_Name" required
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                       placeholder="ABC School">
+                       placeholder="Your school or institution">
             </div>
             
             <!-- Preferred Date -->
             <div>
-                <label for="preferred-date" class="block text-sm font-semibold text-gray-700 mb-2">Preferred Date *</label>
-                <input type="date" id="preferred-date" name="preferred_date" required 
+                <label for="preferred-date" class="block text-gray-700 font-medium mb-2">Preferred Date *</label>
+                <input type="date" id="preferred-date" name="Preferred_Date" required
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
             </div>
             
-            <!-- Specific Requirements -->
+            <!-- Requirements (optional) -->
             <div>
-                <label for="requirements" class="block text-sm font-semibold text-gray-700 mb-2">Specific Requirements</label>
-                <textarea id="requirements" name="requirements" rows="4" 
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                <label for="requirements" class="block text-gray-700 font-medium mb-2">Specific Requirements (Optional)</label>
+                <textarea id="requirements" name="Requirements" rows="3"
+                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
                           placeholder="Tell us what you'd like to focus on..."></textarea>
             </div>
             
             <!-- Submit Button -->
-            <button type="submit" id="submit-btn" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center">
-                <span id="btn-text">Book My Demo</span>
-                <div id="btn-spinner" class="spinner ml-3 hidden"></div>
+            <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                Book My Demo
             </button>
             
             <!-- Back to Home -->
@@ -167,80 +119,11 @@
         // Initialize Lucide icons
         lucide.createIcons();
         
-        // Initialize EmailJS with your Public Key
-        emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
-        
-        // Set minimum date to today
+        // Set minimum date to today for date picker
         const dateInput = document.getElementById('preferred-date');
         const today = new Date().toISOString().split('T')[0];
         dateInput.setAttribute('min', today);
-        
-        // Form submission handler
-        document.getElementById('personalized-demo-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Check honeypot
-            if (this.honeypot.value) {
-                return; // Spam detected
-            }
-            
-            // Get form elements
-            const submitBtn = document.getElementById('submit-btn');
-            const btnText = document.getElementById('btn-text');
-            const btnSpinner = document.getElementById('btn-spinner');
-            const successMsg = document.getElementById('success-message');
-            const errorMsg = document.getElementById('error-message');
-            
-            // Show loading state
-            submitBtn.disabled = true;
-            btnText.textContent = 'Sending...';
-            btnSpinner.classList.remove('hidden');
-            successMsg.classList.add('hidden');
-            errorMsg.classList.add('hidden');
-            
-            // Prepare template parameters
-            const templateParams = {
-                form_type: 'Personalized Demo Request',
-                full_name: this.full_name.value,
-                email: this.email.value,
-                phone: this.phone.value,
-                institution_name: this.institution_name.value,
-                preferred_date: this.preferred_date.value,
-                requirements: this.requirements.value || 'Not specified',
-                submission_date: new Date().toLocaleString()
-            };
-            
-            // Send email using EmailJS
-            emailjs.send('service_x4eo2tt', 'YOUR_TEMPLATE_ID', templateParams)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    
-                    // Show success message
-                    successMsg.classList.remove('hidden');
-                    
-                    // Reset form
-                    document.getElementById('personalized-demo-form').reset();
-                    
-                    // Reset button state
-                    submitBtn.disabled = false;
-                    btnText.textContent = 'Book My Demo';
-                    btnSpinner.classList.add('hidden');
-                    
-                    // Reinitialize icons
-                    lucide.createIcons();
-                    
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    
-                    // Show error message
-                    errorMsg.classList.remove('hidden');
-                    
-                    // Reset button state
-                    submitBtn.disabled = false;
-                    btnText.textContent = 'Book My Demo';
-                    btnSpinner.classList.add('hidden');
-                });
-        });
     </script>
+
 </body>
 </html>
