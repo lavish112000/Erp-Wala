@@ -10,7 +10,6 @@
 
 [Features](#-features) • [Getting Started](#-getting-started) • [Documentation](#-page-descriptions)
 
-
 ---
 
 ## 📋 Table of Contents
