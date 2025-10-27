@@ -31,8 +31,6 @@ This directory contains three separate form pages for lead capture using **FormS
 
 ### Built-in Features (Already Configured)
 
-### Built-in Features (Already Configured)
-
 - ✅ **Professional Email Format**: Table-based layout for easy reading
 - ✅ **Spam Protection**: Honeypot field catches bots
 - ✅ **Custom Subject Lines**: Each form type has unique subject
@@ -165,11 +163,11 @@ If emails aren't arriving:
 2. Verify you clicked the FormSubmit confirmation link
 3. Test with a different email provider
 4. Check browser console for errors
-5. Ensure form `action` URL is correct
+5. Ensure form `action` URL is correct: <https://formsubmit.co/lalitchoudhary112000@gmail.com>
 
 ---
 
 **Service**: FormSubmit.co (Free)  
-**Email**: lalitchoudhary112000@gmail.com  
+**Email**: <lalitchoudhary112000@gmail.com>  
 **Last Updated**: October 27, 2025  
 **Forms**: 3 separate pages with dedicated themes
