@@ -23,7 +23,7 @@ This directory contains three separate form pages for lead capture with EmailJS 
 2. Click **Create New Template**
 3. Use this template structure:
 
-```
+```text
 New Form Submission: {{form_type}}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -62,24 +62,28 @@ New Form Submission: {{form_type}}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-4. Save the template and copy the **Template ID**
+1. Save the template and copy the **Template ID**
 
 ### Step 3: Update Form Files
 
 Replace the placeholders in all three form files:
 
-#### In `demo-request.html`, `personalized-demo.html`, and `free-consultation.html`:
+#### In `demo-request.html`, `personalized-demo.html`, and `free-consultation.html`
 
 **Line with `emailjs.init`:**
+
 ```javascript
 emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
 ```
+
 👉 Replace `YOUR_PUBLIC_KEY` with your actual public key
 
 **Line with `emailjs.send`:**
+
 ```javascript
 emailjs.send('service_x4eo2tt', 'YOUR_TEMPLATE_ID', templateParams)
 ```
+
 👉 Replace `YOUR_TEMPLATE_ID` with your template ID
 
 ## ✅ Complete Configuration Example
@@ -94,7 +98,8 @@ emailjs.send('service_x4eo2tt', 'template_abc123', templateParams)
 
 ## 🎨 Form Features
 
-### All Forms Include:
+### All Forms Include
+
 - ✅ **Honeypot spam protection** (hidden field to catch bots)
 - ✅ **Loading states** with spinner animation
 - ✅ **Success/Error messages** with icons
@@ -103,15 +108,17 @@ emailjs.send('service_x4eo2tt', 'template_abc123', templateParams)
 - ✅ **Back to home** link
 - ✅ **Responsive design** (mobile-friendly)
 
-### Form-Specific Fields:
+### Form-Specific Fields
 
 #### 1. Demo Request Form
+
 - Full Name
 - Email
 - Phone
 - Institution Name
 
 #### 2. Personalized Demo Form
+
 - Full Name
 - Email
 - Phone
@@ -120,6 +127,7 @@ emailjs.send('service_x4eo2tt', 'template_abc123', templateParams)
 - **Requirements** (optional textarea)
 
 #### 3. Free Consultation Form
+
 - Full Name
 - Email
 - Phone
@@ -162,7 +170,8 @@ Each form sends these parameters to EmailJS:
 
 ## 🚀 Going Live
 
-### Final Checklist:
+### Final Checklist
+
 - [ ] Replace `YOUR_PUBLIC_KEY` in all 3 forms
 - [ ] Replace `YOUR_TEMPLATE_ID` in all 3 forms
 - [ ] Test each form submission
@@ -186,12 +195,14 @@ Each form sends these parameters to EmailJS:
 
 ## 💡 Customization
 
-### Change Form Colors:
+### Change Form Colors
+
 - Blue theme → Update `focus:ring-blue-500`, `bg-blue-600`
 - Purple theme → Update `focus:ring-purple-500`, `bg-purple-600`
 - Green theme → Update `focus:ring-green-500`, `bg-green-600`
 
-### Add More Fields:
+### Add More Fields
+
 1. Add HTML input in the form
 2. Add the field name to `templateParams` object
 3. Update EmailJS template to include `{{field_name}}`
@@ -199,6 +210,7 @@ Each form sends these parameters to EmailJS:
 ## 📞 Support
 
 If you encounter issues:
+
 1. Check browser console for errors
 2. Verify EmailJS credentials are correct
 3. Check EmailJS dashboard logs
