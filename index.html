@@ -1,110 +1,215 @@
+<!-- ===============================================================================
+     SCHOOL CHALE HUM - EDUCATIONAL ERP PLATFORM
+     Landing Page for Millennium Academy School Management System
+     ===============================================================================
+     
+     PROJECT OVERVIEW:
+     This is the main landing page for "School Chale Hum", a comprehensive cloud-native
+     Educational ERP (Enterprise Resource Planning) platform designed for modern 
+     educational institutions.
+     
+     KEY FEATURES:
+     - Responsive design with Tailwind CSS framework
+     - Advanced CSS animations (3D transforms, gradients, glows)
+     - Scroll-triggered animations using IntersectionObserver API
+     - Mobile-first approach with hamburger navigation
+     - Animated counters and progress bars
+     - Six main ERP modules: Admissions, Student Info, Finance, Analytics, LMS, Integrations
+     
+     TECHNOLOGY STACK:
+     - HTML5 with semantic markup
+     - Tailwind CSS v3.4+ (via CDN)
+     - Custom CSS animations with @keyframes
+     - Vanilla JavaScript (ES6+)
+     - Lucide Icons library for SVG icons
+     - Google Fonts (Inter typeface)
+     
+     PAGE STRUCTURE:
+     1. Header - Fixed navigation with glassmorphism effect
+     2. Hero Section - Main headline with animated gradient background
+     3. ROI Statistics - 4 key metrics with animated counters
+     4. Before/After Comparison - Problem vs Solution cards
+     5. ERP Ecosystem - Visual diagram of system modules
+     6. Key Metrics Dashboard - Performance indicators with progress bars
+     7. Why Choose Us - 6 value propositions with animated cards
+     8. Implementation Timeline - 4-step process visualization
+     9. Features Section - 6 clickable module cards with 3D effects
+     10. Mobile App Section - App showcase with feature list
+     11. Testimonials - Client feedback carousel
+     12. Footer - Contact information and sitemap
+     
+     ANIMATION FEATURES:
+     - Feature Cards: slideInScale, shimmer, glowPulse, iconBounce, gradientShift
+     - Why Choose Us: slideInRotate, pulseGlow, tiltShake, iconPop, borderRainbow
+     - Scroll Animations: reveal, fadeInUp, slideInLeft, slideInRight
+     - Hover Effects: 3D transforms, gradient borders, scale effects
+     
+     AUTHOR: Millennium Academy Development Team
+     VERSION: 2.0 (with comprehensive animations and comments)
+     LAST UPDATED: 2025
+     =============================================================================== -->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <!-- Meta Tags: Essential information about the webpage -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Chale Hum - The Ultimate Educational ERP Platform</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- External Resources: CDN links for frameworks and fonts -->
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS framework for utility-first styling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Google Fonts preconnect for performance -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"> <!-- Inter font family -->
+    <script src="https://unpkg.com/lucide@latest"></script> <!-- Lucide icon library for SVG icons -->
+    
+    <!-- ========================================
+         CUSTOM STYLES & ANIMATIONS
+         All custom CSS including animations, component styles, and utilities
+         ======================================== -->
     <style>
+        /* ========================================
+           TABLE OF CONTENTS
+           ========================================
+           1. GLOBAL STYLES - Base font and rendering
+           2. HERO SECTION ANIMATIONS - Gradient backgrounds
+           3. SCROLL-TRIGGERED REVEAL ANIMATIONS - Fade-in effects
+           4. UI COMPONENT STYLES - Buttons, cards, navigation
+           5. ADVANCED KEYFRAME ANIMATIONS - Reusable animations
+           6. FEATURE SECTION ANIMATIONS - Enhanced 3D effects
+           7. WHY CHOOSE US SECTION ANIMATIONS - Specialized card effects
+           8. RESPONSIVE UTILITIES - Mobile adaptations
+           ======================================== */
+        
+        /* ========================================
+           GLOBAL STYLES
+           ======================================== */
+        
+        /* Body: Set default font and smooth text rendering */
         body {
             font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased; /* Smooth fonts on WebKit browsers */
+            -moz-osx-font-smoothing: grayscale; /* Smooth fonts on Firefox */
         }
         
-        /* -- Animated Gradient Background -- */
+        /* ========================================
+           HERO SECTION ANIMATIONS
+           ======================================== */
+        
+        /* Hero Gradient Background: Animated multi-color gradient */
         .hero-gradient {
             background: linear-gradient(-45deg, #e0f2fe, #dbeafe, #e0e7ff, #f3e8ff);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
 
+        /* Gradient Background Animation: Smooth color transitions */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* -- Scroll-triggered Animations -- */
+        /* ========================================
+           SCROLL-TRIGGERED REVEAL ANIMATIONS
+           ======================================== */
+        
+        /* Reveal Animation: Elements fade in and slide up when scrolled into view */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
             transition-delay: 0.2s;
         }
+        
+        /* Visible State: Applied by JavaScript when element enters viewport */
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        /* Staggered animation delay */
+        
+        /* Staggered Animation Delays: Creates cascading effect for multiple elements */
         .reveal.delay-1 { transition-delay: 0.3s; }
         .reveal.delay-2 { transition-delay: 0.4s; }
         .reveal.delay-3 { transition-delay: 0.5s; }
 
 
-        /* -- Enhanced UI Elements -- */
+        /* ========================================
+           UI COMPONENT STYLES
+           ======================================== */
+        
+        /* Glassmorphism Header: Semi-transparent frosted glass effect */
         .glassmorphism-header {
             background-color: rgba(255, 255, 255, 0.7);
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
         }
+        
+        /* Navigation Link Underline: Animated underline effect on hover */
         .nav-link-underline {
             position: relative;
         }
         .nav-link-underline::after {
-            content: '';
+            content: ''; /* Creates pseudo-element for underline */
             position: absolute;
             width: 100%;
-            transform: scaleX(0);
+            transform: scaleX(0); /* Initially hidden */
             height: 2px;
             bottom: -4px;
             left: 0;
-            background-color: #3b82f6;
-            transform-origin: bottom right;
+            background-color: #3b82f6; /* Blue underline */
+            transform-origin: bottom right; /* Animation starts from right */
             transition: transform 0.25s ease-out;
         }
         .nav-link-underline:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+            transform: scaleX(1); /* Expands to full width on hover */
+            transform-origin: bottom left; /* Animation expands to left */
         }
+        
+        /* Glow Button: Elevated button with shadow effects */
         .glow-button {
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); /* Subtle blue glow */
         }
         .glow-button:hover {
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4); /* Stronger glow on hover */
+            transform: translateY(-2px); /* Lifts up on hover */
         }
 
+        /* Feature Card: Interactive cards with lift effect */
         .feature-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #e5e7eb; /* Light gray border */
         }
         .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-            border-color: #93c5fd;
+            transform: translateY(-8px); /* Lifts card on hover */
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); /* Enhanced shadow */
+            border-color: #93c5fd; /* Blue border on hover */
         }
+        
+        /* Feature Icon Background: Gradient background for icons */
         .feature-icon-bg {
-            background: linear-gradient(135deg, #dbeafe, #c7d2fe);
+            background: linear-gradient(135deg, #dbeafe, #c7d2fe); /* Blue to purple gradient */
         }
 
-        /* -- Advanced Animations -- */
+        /* ========================================
+           ADVANCED KEYFRAME ANIMATIONS
+           ======================================== */
+        
+        /* Float Animation: Gentle up and down movement */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
         }
         
+        /* Pulse Ring: Expanding and fading ring effect */
         @keyframes pulse-ring {
             0% { transform: scale(0.8); opacity: 1; }
             50% { transform: scale(1.2); opacity: 0.3; }
             100% { transform: scale(0.8); opacity: 1; }
         }
 
+        /* Fade In Up: Element fades in while moving upward */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -116,6 +221,7 @@
             }
         }
 
+        /* Slide In Left: Element slides in from left */
         @keyframes slideInLeft {
             from {
                 opacity: 0;
@@ -127,6 +233,7 @@
             }
         }
 
+        /* Slide In Right: Element slides in from right */
         @keyframes slideInRight {
             from {
                 opacity: 0;
@@ -138,6 +245,7 @@
             }
         }
 
+        /* Scale In: Element grows from small to normal size */
         @keyframes scaleIn {
             from {
                 opacity: 0;
@@ -149,24 +257,30 @@
             }
         }
 
+        /* Draw Line: SVG line drawing animation */
         @keyframes drawLine {
             from { stroke-dashoffset: 1000; }
             to { stroke-dashoffset: 0; }
         }
 
-        /* Modern Feature Card Animations - ENHANCED & MORE VISIBLE */
+        /* ========================================
+           FEATURE SECTION ANIMATIONS - ENHANCED
+           ======================================== */
+        
+        /* Feature Float: Combines vertical movement with 3D rotation */
         @keyframes featureFloat {
             0%, 100% { transform: translateY(0px) rotateX(0deg); }
-            50% { transform: translateY(-20px) rotateX(5deg); }
+            50% { transform: translateY(-20px) rotateX(5deg); /* Creates 3D floating effect */}
         }
 
+        /* Shimmer Effect: Traveling light shimmer across elements */
         @keyframes shimmer {
             0% { 
                 background-position: -200% 0; 
                 opacity: 0;
             }
             50% {
-                opacity: 1;
+                opacity: 1; /* Shimmer becomes visible at midpoint */
             }
             100% { 
                 background-position: 200% 0; 
@@ -174,6 +288,7 @@
             }
         }
 
+        /* Glow Pulse: Pulsating glow effect with multiple shadow layers */
         @keyframes glowPulse {
             0%, 100% { 
                 box-shadow: 0 0 30px rgba(59, 130, 246, 0.6),
@@ -187,6 +302,7 @@
             }
         }
 
+        /* Icon Bounce: Playful bouncing animation with rotation */
         @keyframes iconBounce {
             0%, 100% { transform: scale(1) rotate(0deg); }
             25% { transform: scale(1.3) rotate(-15deg); }
@@ -194,6 +310,7 @@
             75% { transform: scale(1.3) rotate(-10deg); }
         }
 
+        /* Gradient Shift: Moving gradient background animation */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             25% { background-position: 100% 50%; }
@@ -397,6 +514,187 @@
         .reveal-feature.delay-5 { animation-delay: 0.5s; }
         .reveal-feature.delay-6 { animation-delay: 0.6s; }
 
+        /* Why Choose Us - Modern Card Animations */
+        @keyframes slideInRotate {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px) rotate(-10deg) scale(0.8);
+            }
+            60% {
+                transform: translateX(10px) rotate(2deg) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) rotate(0) scale(1);
+            }
+        }
+
+        @keyframes slideInRotateRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100px) rotate(10deg) scale(0.8);
+            }
+            60% {
+                transform: translateX(-10px) rotate(-2deg) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) rotate(0) scale(1);
+            }
+        }
+
+        /* ========================================
+           "WHY CHOOSE US" SECTION ANIMATIONS
+           ======================================== */
+        
+        /* Pulse Glow: Intense pulsating glow for icon boxes */
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.4),
+                           0 0 40px rgba(59, 130, 246, 0.2),
+                           inset 0 0 20px rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.8),
+                           0 0 80px rgba(59, 130, 246, 0.4),
+                           inset 0 0 30px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        /* Tilt Shake: 3D wobble effect for cards on hover */
+        @keyframes tiltShake {
+            0%, 100% { transform: perspective(1000px) rotateX(0) rotateY(0); }
+            25% { transform: perspective(1000px) rotateX(3deg) rotateY(-3deg); }
+            50% { transform: perspective(1000px) rotateX(-3deg) rotateY(3deg); }
+            75% { transform: perspective(1000px) rotateX(3deg) rotateY(3deg); }
+        }
+
+        /* Icon Pop: Playful icon animation with brightness effect */
+        @keyframes iconPop {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                filter: brightness(1);
+            }
+            25% { 
+                transform: scale(1.2) rotate(-10deg); 
+                filter: brightness(1.2); /* Brightens icon */
+            }
+            50% { 
+                transform: scale(1.3) rotate(10deg); 
+                filter: brightness(1.4); /* Maximum brightness */
+            }
+            75% { 
+                transform: scale(1.2) rotate(-5deg); 
+                filter: brightness(1.2);
+            }
+        }
+
+        /* Border Rainbow: Cycling through 4 colors for borders */
+        @keyframes borderRainbow {
+            0% { border-color: #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }   /* Blue */
+            25% { border-color: #8b5cf6; box-shadow: 0 0 30px rgba(139, 92, 246, 0.6); }  /* Purple */
+            50% { border-color: #ec4899; box-shadow: 0 0 30px rgba(236, 72, 153, 0.6); }  /* Pink */
+            75% { border-color: #10b981; box-shadow: 0 0 30px rgba(16, 185, 129, 0.6); }  /* Green */
+            100% { border-color: #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); } /* Back to Blue */
+        }
+
+        /* Why Choose Card: Base card styling with 3D effects */
+        .why-choose-card {
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); /* Elastic easing */
+            transform-style: preserve-3d; /* Enable 3D transforms */
+            perspective: 1000px; /* Perspective depth */
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .why-choose-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.6s ease;
+            transform: scale(0);
+        }
+
+        .why-choose-card:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .why-choose-card:hover {
+            transform: translateY(-15px) scale(1.03) rotateX(3deg);
+            z-index: 10;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: borderRainbow 3s ease-in-out infinite;
+        }
+
+        .why-choose-card:hover .why-icon-box {
+            animation: iconPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), pulseGlow 2s ease-in-out infinite;
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        .why-choose-card:hover h3 {
+            color: #3b82f6;
+            transform: translateX(5px) scale(1.05);
+        }
+
+        .why-choose-card:hover p {
+            color: #1e40af;
+            transform: translateX(3px);
+        }
+
+        .why-icon-box {
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+
+        .why-icon-box::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: inherit;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0.5;
+            transition: all 0.4s ease;
+        }
+
+        .why-choose-card:hover .why-icon-box::after {
+            transform: translate(-50%, -50%) scale(1.8);
+            opacity: 0;
+        }
+
+        /* Staggered entrance animations */
+        .why-reveal-left {
+            animation: slideInRotate 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+        }
+
+        .why-reveal-left.loaded,
+        .why-reveal-right.loaded {
+            opacity: 1 !important;
+        }
+
+        .why-reveal-right {
+            animation: slideInRotateRight 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+        }
+
+        .why-delay-1 { animation-delay: 0.1s; }
+        .why-delay-2 { animation-delay: 0.2s; }
+        .why-delay-3 { animation-delay: 0.3s; }
+        .why-delay-4 { animation-delay: 0.4s; }
+        .why-delay-5 { animation-delay: 0.5s; }
+        .why-delay-6 { animation-delay: 0.6s; }
+
         .timeline-dot {
             transition: all 0.3s ease;
         }
@@ -466,55 +764,90 @@
         .chart-h-100 { height: 100%; }
     </style>
 </head>
+<!-- ========================================
+     BODY: MAIN CONTENT STRUCTURE
+     ======================================== -->
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header -->
+    <!-- ========================================
+         HEADER: NAVIGATION BAR
+         Fixed position, glassmorphism effect
+         ======================================== -->
     <header class="glassmorphism-header fixed top-0 left-0 right-0 z-50 border-b border-gray-200/80">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
             <a href="#" class="text-2xl font-bold text-gray-900">
                 School Chale <span class="text-blue-600">Hum</span>
             </a>
+            
+            <!-- Desktop Navigation Links (hidden on mobile) -->
             <nav class="hidden md:flex space-x-10 items-center">
                 <a href="#features" class="text-gray-600 hover:text-blue-600 nav-link-underline">Features</a>
                 <a href="#mobile-app" class="text-gray-600 hover:text-blue-600 nav-link-underline">Mobile App</a>
                 <a href="#testimonials" class="text-gray-600 hover:text-blue-600 nav-link-underline">Testimonials</a>
                 <a href="#contact" class="text-gray-600 hover:text-blue-600 nav-link-underline">Contact</a>
             </nav>
+            
+            <!-- Action Buttons: CTA and Mobile Menu Toggle -->
             <div class="flex items-center space-x-2">
+                 <!-- CTA Button (hidden on very small screens) -->
                  <a href="#" class="hidden sm:inline-block bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold glow-button">Request a Demo</a>
+                 
+                 <!-- Mobile Menu Hamburger Button (visible only on mobile) -->
                  <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100" aria-label="Toggle mobile menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                  </button>
             </div>
         </div>
-        <!-- Mobile Menu -->
+        
+        <!-- Mobile Navigation Menu (toggleable, hidden by default) -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-gray-200/80">
             <a href="#features" class="block py-2 text-gray-600 hover:text-blue-600">Features</a>
             <a href="#mobile-app" class="block py-2 text-gray-600 hover:text-blue-600">Mobile App</a>
             <a href="#testimonials" class="block py-2 text-gray-600 hover:text-blue-600">Testimonials</a>
             <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+            <!-- Mobile CTA Button -->
             <a href="#" class="block mt-2 bg-blue-600 text-white text-center px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Request a Demo</a>
         </div>
     </header>
 
+    <!-- ========================================
+         MAIN CONTENT: ALL PAGE SECTIONS
+         ======================================== -->
     <main>
-        <!-- Hero Section -->
+        <!-- ========================================
+             HERO SECTION
+             Main landing section with headline and CTA buttons
+             Animated gradient background
+             ======================================== -->
         <section class="pt-36 pb-24 hero-gradient relative overflow-hidden">
             <div class="container mx-auto px-6 text-center relative z-10">
+                <!-- Main Headline: Fade-in animation -->
                 <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight reveal">
                     The Operating System for <span class="text-blue-600">Modern Education</span>
                 </h1>
+                
+                <!-- Subheadline: Delayed fade-in for cascading effect -->
                 <p class="mt-6 text-lg text-gray-700 max-w-3xl mx-auto reveal delay-1">
                     School Chale Hum offers a unified, cloud-native platform that empowers educators, engages students, and simplifies administration for institutions of the future.
                 </p>
+                
+                <!-- Call-to-Action Buttons: Further delayed for staggered animation -->
                 <div class="mt-10 flex justify-center gap-4 flex-wrap reveal delay-2">
+                    <!-- Primary CTA: Book Demo -->
                     <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg glow-button">Book a Personalized Demo</a>
+                    
+                    <!-- Secondary CTA: Learn More -->
                     <a href="#features" class="bg-white text-gray-800 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all hover:scale-105 border border-gray-300 shadow-sm hover:shadow-lg">Discover Features</a>
                 </div>
             </div>
         </section>
 
-        <!-- ROI Statistics Section -->
+        <!-- ========================================
+             ROI STATISTICS SECTION
+             Key metrics and value propositions
+             Dark gradient background with stat cards
+             ======================================== -->
         <section class="py-20 bg-gradient-to-br from-blue-600 to-indigo-700 text-white relative overflow-hidden">
             <div class="absolute inset-0 opacity-10">
                 <div class="absolute top-20 left-20 w-64 h-64 bg-white rounded-full blur-3xl"></div>
@@ -797,55 +1130,70 @@
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
+        <!-- ========================================
+             WHY CHOOSE US SECTION
+             6 value propositions with animated cards
+             Staggered left/right entrance animations
+             Gradient backgrounds for each card
+             ======================================== -->
         <section class="py-24 bg-white">
             <div class="container mx-auto px-6">
+                <!-- Section Header -->
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900">Why Leading Institutions Choose Us</h2>
                     <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Enterprise-grade features built specifically for education</p>
                 </div>
+                
+                <!-- Cards Grid (6 cards with alternating animations) -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-100 hover:border-blue-300 transition-all reveal">
-                        <div class="bg-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation">
+                    <!-- Card 1: Security (slides from left) -->
+                    <div class="why-choose-card why-reveal-left why-delay-1 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-100 hover:border-blue-300 transition-all">
+                        <div class="why-icon-box bg-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i data-lucide="shield-check" class="text-white w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Bank-Level Security</h3>
-                        <p class="text-gray-600">256-bit encryption, role-based access control, and GDPR compliance to protect sensitive student data.</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 transition-all duration-300">Bank-Level Security</h3>
+                        <p class="text-gray-600 transition-all duration-300">256-bit encryption, role-based access control, and GDPR compliance to protect sensitive student data.</p>
                     </div>
-                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-100 hover:border-purple-300 transition-all reveal delay-1">
-                        <div class="bg-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-0-5s">
+                    
+                    <!-- Card 2: Performance (slides from right) -->
+                    <div class="why-choose-card why-reveal-right why-delay-2 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-100 hover:border-purple-300 transition-all">
+                        <div class="why-icon-box bg-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i data-lucide="zap" class="text-white w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Lightning Fast</h3>
-                        <p class="text-gray-600">Cloud-native architecture ensures 99.9% uptime with sub-second response times globally.</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 transition-all duration-300">Lightning Fast</h3>
+                        <p class="text-gray-600 transition-all duration-300">Cloud-native architecture ensures 99.9% uptime with sub-second response times globally.</p>
                     </div>
-                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-100 hover:border-green-300 transition-all reveal delay-2">
-                        <div class="bg-green-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-1s">
+                    
+                    <!-- Card 3: Support (slides from left) -->
+                    <div class="why-choose-card why-reveal-left why-delay-3 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-100 hover:border-green-300 transition-all">
+                        <div class="why-icon-box bg-green-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i data-lucide="users-round" class="text-white w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">24/7 Expert Support</h3>
-                        <p class="text-gray-600">Dedicated account managers and technical support team available round the clock.</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 transition-all duration-300">24/7 Expert Support</h3>
+                        <p class="text-gray-600 transition-all duration-300">Dedicated account managers and technical support team available round the clock.</p>
                     </div>
-                    <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 border-2 border-orange-100 hover:border-orange-300 transition-all reveal">
-                        <div class="bg-orange-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-1-5s">
+                    
+                    <!-- Card 4: Scalability (slides from right) -->
+                    <div class="why-choose-card why-reveal-right why-delay-4 bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 border-2 border-orange-100 hover:border-orange-300 transition-all">
+                        <div class="why-icon-box bg-orange-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i data-lucide="trending-up" class="text-white w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Scalable Growth</h3>
-                        <p class="text-gray-600">From 100 to 10,000+ students, our platform grows seamlessly with your institution.</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 transition-all duration-300">Scalable Growth</h3>
+                        <p class="text-gray-600 transition-all duration-300">From 100 to 10,000+ students, our platform grows seamlessly with your institution.</p>
                     </div>
-                    <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 border-2 border-cyan-100 hover:border-cyan-300 transition-all reveal delay-1">
-                        <div class="bg-cyan-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-2s">
+                    <div class="why-choose-card why-reveal-left why-delay-5 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8 border-2 border-cyan-100 hover:border-cyan-300 transition-all">
+                        <div class="why-icon-box bg-cyan-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i data-lucide="smartphone" class="text-white w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Mobile-First Design</h3>
-                        <p class="text-gray-600">Native iOS and Android apps for students, parents, and staff to stay connected anywhere.</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 transition-all duration-300">Mobile-First Design</h3>
+                        <p class="text-gray-600 transition-all duration-300">Native iOS and Android apps for students, parents, and staff to stay connected anywhere.</p>
                     </div>
-                    <div class="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-8 border-2 border-yellow-100 hover:border-yellow-300 transition-all reveal delay-2">
-                        <div class="bg-yellow-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float-animation anim-delay-2-5s">
+                    <div class="why-choose-card why-reveal-right why-delay-6 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-8 border-2 border-yellow-100 hover:border-yellow-300 transition-all">
+                        <div class="why-icon-box bg-yellow-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i data-lucide="brain" class="text-white w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">AI-Powered Insights</h3>
-                        <p class="text-gray-600">Machine learning algorithms predict trends, identify at-risk students, and optimize operations.</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 transition-all duration-300">AI-Powered Insights</h3>
+                        <p class="text-gray-600 transition-all duration-300">Machine learning algorithms predict trends, identify at-risk students, and optimize operations.</p>
                     </div>
                 </div>
             </div>
@@ -919,47 +1267,62 @@
             </div>
         </section>
 
-        <!-- Features Section -->
+        <!-- ========================================
+             FEATURES SECTION
+             Showcase of 6 main ERP modules
+             Animated cards with 3D effects and gradient borders
+             ======================================== -->
         <section id="features" class="py-24 bg-white">
             <div class="container mx-auto px-6">
+                <!-- Section Header -->
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 reveal">An Ecosystem Built for Growth</h2>
                     <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto reveal delay-1">Integrate every facet of your institution on a single, intelligent platform.</p>
                 </div>
+                
+                <!-- Feature Cards Grid (6 cards total) -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Feature Card -->
+                    <!-- Feature Card 1: Admissions & CRM -->
                     <a href="admissions-crm.html" class="bg-white p-8 rounded-xl feature-card reveal-feature delay-1 loaded block cursor-pointer shadow-lg hover:shadow-2xl">
+                        <!-- Icon Container: Blue to Purple Gradient -->
                         <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6 bg-gradient-to-br from-blue-500 to-purple-600">
                             <i data-lucide="users-2" class="text-white h-8 w-8"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-3 text-gray-900">Intelligent Admissions & CRM</h3>
                         <p class="text-gray-600">Automate your admissions pipeline from lead capture to enrollment with our integrated CRM, online applications, and smart follow-ups.</p>
                     </a>
-                     <!-- Feature Card -->
+                     
+                     <!-- Feature Card 2: Student Information System -->
                     <a href="student-information.html" class="bg-white p-8 rounded-xl feature-card reveal-feature delay-2 loaded block cursor-pointer shadow-lg hover:shadow-2xl">
+                        <!-- Icon Container: Green to Teal Gradient -->
                         <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6 bg-gradient-to-br from-green-500 to-teal-600">
                            <i data-lucide="graduation-cap" class="text-white h-8 w-8"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-3 text-gray-900">Unified Student Information</h3>
                         <p class="text-gray-600">Maintain a 360-degree view of every student, managing academics, attendance, health, and progress from a central, secure hub.</p>
                     </a>
-                     <!-- Feature Card -->
+                     
+                     <!-- Feature Card 3: Finance Management -->
                     <a href="finance.html" class="bg-white p-8 rounded-xl feature-card reveal-feature delay-3 loaded block cursor-pointer shadow-lg hover:shadow-2xl">
+                        <!-- Icon Container: Yellow to Orange Gradient -->
                         <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6 bg-gradient-to-br from-yellow-500 to-orange-600">
                            <i data-lucide="banknote" class="text-white h-8 w-8"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-3 text-gray-900">Streamlined Finance</h3>
                         <p class="text-gray-600">Simplify financial operations with automated fee collection, online payments, grant management, and real-time P&L statements.</p>
                     </a>
-                     <!-- Feature Card -->
+                     
+                     <!-- Feature Card 4: Analytics & Insights -->
                     <a href="analytics.html" class="bg-white p-8 rounded-xl feature-card reveal-feature delay-4 loaded block cursor-pointer shadow-lg hover:shadow-2xl">
+                        <!-- Icon Container: Purple to Pink Gradient -->
                         <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6 bg-gradient-to-br from-purple-500 to-pink-600">
                            <i data-lucide="pie-chart" class="text-white h-8 w-8"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-3 text-gray-900">Actionable Analytics</h3>
                         <p class="text-gray-600">Leverage AI-powered dashboards to gain deep insights into institutional performance and student behavior, driving data-informed decisions.</p>
                     </a>
-                     <!-- Feature Card -->
+                     
+                     <!-- Feature Card 5: Learning Management System -->
                     <a href="lms.html" class="bg-white p-8 rounded-xl feature-card reveal-feature delay-5 loaded block cursor-pointer shadow-lg hover:shadow-2xl">
                         <div class="flex items-center justify-center h-16 w-16 rounded-xl feature-icon-bg mb-6 bg-gradient-to-br from-red-500 to-rose-600">
                             <i data-lucide="book-open-check" class="text-white h-8 w-8"></i>
@@ -1134,16 +1497,31 @@
         </div>
     </footer>
 
+    <!-- ========================================
+         JAVASCRIPT: INTERACTIVITY & ANIMATIONS
+         ======================================== -->
     <script>
+        /* ========================================
+           ICON INITIALIZATION
+           ======================================== */
+        
+        // Initialize Lucide icons: Converts data-lucide attributes to SVG icons
         lucide.createIcons();
 
-        // --- Mobile menu toggle ---
+        /* ========================================
+           MOBILE NAVIGATION
+           ======================================== */
+        
+        // Mobile menu toggle: Opens/closes mobile navigation menu
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Toggle menu visibility when hamburger button is clicked
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
         
+        // Auto-close menu when a navigation link is clicked (improves mobile UX)
         const mobileMenuLinks = mobileMenu.querySelectorAll('a');
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -1151,94 +1529,142 @@
             });
         });
 
-        // --- Scroll-triggered Animations ---
+        /* ========================================
+           SCROLL-TRIGGERED ANIMATIONS
+           ======================================== */
+        
+        // Reveal Animation: Fades in elements when scrolled into view
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // No need to unobserve, let animation stay
+                    entry.target.classList.add('visible'); // Triggers CSS animation
+                    // Element stays visible after animation (no unobserve)
                 }
             });
         }, {
             threshold: 0.1 // Trigger when 10% of the element is visible
         });
 
+        // Attach observer to all elements with 'reveal' class
         revealElements.forEach(elem => {
             revealObserver.observe(elem);
         });
 
-        // --- Feature Card Animations with Scroll Trigger ---
+        /* ========================================
+           FEATURE CARD SCROLL ANIMATIONS
+           ======================================== */
+        
+        // Feature Cards: Triggers entrance animations on scroll
         const featureCards = document.querySelectorAll('.reveal-feature');
         const featureObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Animation will play automatically due to CSS
-                    // No need to unobserve
+                    // CSS animations play automatically when element enters viewport
+                    // No need to unobserve - cards remain animated
                 }
             });
         }, {
-            threshold: 0.15 // Trigger when 15% visible
+            threshold: 0.15 // Trigger when 15% of card is visible
         });
 
+        // Attach observer to all feature cards
         featureCards.forEach(card => {
             featureObserver.observe(card);
         });
 
-        // --- Counter Animation ---
+        /* ========================================
+           "WHY CHOOSE US" CARD ANIMATIONS
+           ======================================== */
+        
+        // Why Choose Us Cards: Staggered left/right entrance animations
+        const whyChooseCards = document.querySelectorAll('.why-reveal-left, .why-reveal-right');
+        const whyChooseObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded'); // Triggers CSS animation
+                }
+            });
+        }, {
+            threshold: 0.15 // Trigger when 15% of card is visible
+        });
+
+        // Attach observer to all "Why Choose Us" cards
+        whyChooseCards.forEach(card => {
+            whyChooseObserver.observe(card);
+        });
+
+        /* ========================================
+           ANIMATED COUNTERS
+           ======================================== */
+        
+        /**
+         * Animates a number from 0 to target value
+         * @param {HTMLElement} element - Element containing the counter
+         */
         function animateCounter(element) {
-            const target = parseInt(element.getAttribute('data-target'));
-            const duration = 2000; // 2 seconds
-            const increment = target / (duration / 16); // 60fps
+            const target = parseInt(element.getAttribute('data-target')); // Get target number
+            const duration = 2000; // Animation duration in milliseconds (2 seconds)
+            const increment = target / (duration / 16); // Calculate increment per frame (60fps)
             let current = 0;
 
+            // Update counter on each animation frame
             const updateCounter = () => {
                 current += increment;
                 if (current < target) {
-                    element.textContent = Math.floor(current);
-                    requestAnimationFrame(updateCounter);
+                    element.textContent = Math.floor(current); // Round down to whole number
+                    requestAnimationFrame(updateCounter); // Continue animation
                 } else {
-                    element.textContent = target;
+                    element.textContent = target; // Ensure final value is exact
                 }
             };
 
-            updateCounter();
+            updateCounter(); // Start the animation
         }
 
-        // Observe counters and animate when visible
+        // Observe counter elements and animate when they become visible
         const counterElements = document.querySelectorAll('.counter');
         const counterObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateCounter(entry.target);
-                    observer.unobserve(entry.target); // Only animate once
+                    animateCounter(entry.target); // Start counting animation
+                    observer.unobserve(entry.target); // Only animate once per page load
                    }
             });
         }, {
-            threshold: 0.5
+            threshold: 0.5 // Trigger when 50% of counter is visible
         });
 
+        // Attach observer to all counter elements
         counterElements.forEach(elem => {
             counterObserver.observe(elem);
         });
 
-        // --- Metric Bar Animation ---
+        /* ========================================
+           METRIC BAR ANIMATIONS
+           ======================================== */
+        
+        // Animated Progress Bars: Grows bars to target width when scrolled into view
         const metricBars = document.querySelectorAll('.metric-bar');
         const barObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const bar = entry.target;
-                    const targetWidth = bar.getAttribute('data-width');
+                    const targetWidth = bar.getAttribute('data-width'); // Get target width percentage
+                    
+                    // Small delay before animation for better visual effect
                     setTimeout(() => {
-                        bar.style.width = targetWidth + '%';
+                        bar.style.width = targetWidth + '%'; // Animate to target width (CSS transition)
                     }, 200);
-                    observer.unobserve(bar);
+                    
+                    observer.unobserve(bar); // Only animate once
                 }
             });
         }, {
-            threshold: 0.5
+            threshold: 0.5 // Trigger when 50% of bar container is visible
         });
 
+        // Attach observer to all metric bars
         metricBars.forEach(bar => {
             barObserver.observe(bar);
         });
